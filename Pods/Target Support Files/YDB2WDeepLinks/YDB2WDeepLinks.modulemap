@@ -1,0 +1,6 @@
+framework module YDB2WDeepLinks {
+  umbrella header "YDB2WDeepLinks-umbrella.h"
+
+  export *
+  module * { export * }
+}

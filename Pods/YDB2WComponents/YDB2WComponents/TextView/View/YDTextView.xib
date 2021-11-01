@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YDTextView" customModule="YDB2WComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="pO4-bt-8Zl"/>
+                <outlet property="heightConstraint" destination="oav-sc-mHz" id="uno-aU-SpS"/>
+                <outlet property="textView" destination="t8m-iW-tlQ" id="AYK-wV-FQi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8m-iW-tlQ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="jkT-nY-bTS"/>
+                        <constraint firstAttribute="height" constant="69" id="oav-sc-mHz"/>
+                    </constraints>
+                    <inset key="scrollIndicatorInsets" minX="12" minY="8" maxX="8" maxY="12"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="t8m-iW-tlQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3G8-gY-BRo"/>
+                <constraint firstItem="t8m-iW-tlQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GbY-en-82A"/>
+                <constraint firstAttribute="trailing" secondItem="t8m-iW-tlQ" secondAttribute="trailing" id="Q8Q-st-3pN"/>
+                <constraint firstAttribute="bottom" secondItem="t8m-iW-tlQ" secondAttribute="bottom" id="ZZq-FZ-Pmq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140.57971014492756" y="144.97767857142856"/>
+        </view>
+    </objects>
+</document>

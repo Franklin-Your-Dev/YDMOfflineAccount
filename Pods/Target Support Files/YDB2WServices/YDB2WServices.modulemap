@@ -1,0 +1,6 @@
+framework module YDB2WServices {
+  umbrella header "YDB2WServices-umbrella.h"
+
+  export *
+  module * { export * }
+}

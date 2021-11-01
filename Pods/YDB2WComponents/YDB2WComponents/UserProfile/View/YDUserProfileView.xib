@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YDUserProfileView" customModule="YDB2WComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="LYd-ng-HdW"/>
+                <outlet property="nameLabel" destination="dfu-zZ-t11" id="TkN-yt-9Zl"/>
+                <outlet property="photoImageView" destination="viW-Ka-UBN" id="A8W-b2-AZN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="viW-Ka-UBN">
+                    <rect key="frame" x="174.5" y="0.0" width="65" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="W4D-6P-ae7"/>
+                        <constraint firstAttribute="width" constant="65" id="gAS-ot-3YI"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfu-zZ-t11">
+                    <rect key="frame" x="26" y="72" width="362" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" name="black"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="viW-Ka-UBN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0cn-jO-HTe"/>
+                <constraint firstItem="dfu-zZ-t11" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="FRO-7W-5hn"/>
+                <constraint firstItem="viW-Ka-UBN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="N0k-Nx-wkq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dfu-zZ-t11" secondAttribute="trailing" constant="26" id="mrr-fX-jZt"/>
+                <constraint firstItem="dfu-zZ-t11" firstAttribute="top" secondItem="viW-Ka-UBN" secondAttribute="bottom" constant="7" id="xEh-3G-XDC"/>
+                <constraint firstItem="dfu-zZ-t11" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="xm9-qZ-NZg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="141" y="145"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="black">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

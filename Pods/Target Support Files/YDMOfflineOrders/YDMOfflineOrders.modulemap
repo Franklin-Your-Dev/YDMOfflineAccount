@@ -1,0 +1,6 @@
+framework module YDMOfflineOrders {
+  umbrella header "YDMOfflineOrders-umbrella.h"
+
+  export *
+  module * { export * }
+}

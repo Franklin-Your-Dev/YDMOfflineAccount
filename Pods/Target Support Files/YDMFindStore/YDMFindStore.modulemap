@@ -1,0 +1,6 @@
+framework module YDMFindStore {
+  umbrella header "YDMFindStore-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module YDQuiz {
+  umbrella header "YDQuiz-umbrella.h"
+
+  export *
+  module * { export * }
+}
