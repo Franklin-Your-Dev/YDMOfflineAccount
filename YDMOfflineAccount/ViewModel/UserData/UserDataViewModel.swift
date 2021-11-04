@@ -85,6 +85,20 @@ class UserDataViewModel {
       name: YDConstants.Notification.QuizSuccess,
       object: nil
     )
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(fromQuizWrongAnswerOrExit),
+      name: YDConstants.Notification.QuizWrongAnswer,
+      object: nil
+    )
+
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(fromQuizWrongAnswerOrExit),
+      name: YDConstants.Notification.QuizExit,
+      object: nil
+    )
   }
   
   deinit {
@@ -188,6 +202,10 @@ class UserDataViewModel {
     getUsersInfo()
     snackBarMessage.value = "Seus dados foram atualizados com sucesso"
   }
+  
+  @objc func fromQuizWrongAnswerOrExit() {
+    onBack()
+  }
 }
 
 // MARK: Extension
@@ -198,6 +216,7 @@ extension UserDataViewModel: UserDataViewModelDelegate {
 
   func onBack() {
     navigation.onBack()
+    NotificationCenter.default.removeObserver(self)
   }
 
   func getUsersInfo() {
