@@ -77,7 +77,6 @@ class UserDataViewModel {
     self.service = service
     self.navigation = navigation
     self.currentUser = user
-    self.trackEvent(.offlineAccountUsersInfo, ofType: .state)
     
     NotificationCenter.default.addObserver(
       self,
@@ -177,6 +176,7 @@ class UserDataViewModel {
         case .success(let data):
           self.userData = data
           self.usersInfo.value = data.getUserDataSets()
+          self.trackEvent(.offlineAccountUsersInfo, ofType: .state)
           self.loading.value = false
 
         case .failure(let error):
