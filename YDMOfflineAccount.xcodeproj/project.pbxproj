@@ -49,6 +49,8 @@
 		92427C12273082E9007358A4 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BE8273082E9007358A4 /* TermsViewModel.swift */; };
 		92427C13273082E9007358A4 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEA273082E9007358A4 /* UserDataViewModel.swift */; };
 		92427C14273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */; };
+		9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42427517043002991AC /* HomeHeaderViewCell.swift */; };
+		9294A42727517043002991AC /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42527517043002991AC /* HomeViewCell.swift */; };
 		A1E4DDE26F9FE82B7F3425D1 /* Pods_YDMOfflineAccount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,8 @@
 		92427BE8273082E9007358A4 /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		92427BEA273082E9007358A4 /* UserDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMStoreModeOfflineAccountCoordinator.swift; sourceTree = "<group>"; };
+		9294A42427517043002991AC /* HomeHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewCell.swift; sourceTree = "<group>"; };
+		9294A42527517043002991AC /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 			children = (
 				92427B99273082E8007358A4 /* Components */,
 				92427BEB273082E9007358A4 /* Coordinator */,
+				9294A39D27513E9E002991AC /* Home */,
 				92427B9C273082E9007358A4 /* Resource */,
 				92427B9F273082E9007358A4 /* View */,
 				92427BB4273082E9007358A4 /* ViewController */,
@@ -193,21 +198,22 @@
 		92427B9F273082E9007358A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				92427BA0273082E9007358A4 /* Home */,
 				92427BA2273082E9007358A4 /* Historic */,
 				92427BA5273082E9007358A4 /* Terms */,
 				92427BA7273082E9007358A4 /* UserData */,
-				92427BB3273082E9007358A4 /* PreHomeViewController+Layout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		92427BA0273082E9007358A4 /* Home */ = {
+		92427BA0273082E9007358A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9294A42427517043002991AC /* HomeHeaderViewCell.swift */,
+				9294A42527517043002991AC /* HomeViewCell.swift */,
+				92427BB3273082E9007358A4 /* PreHomeViewController+Layout.swift */,
 				92427BA1273082E9007358A4 /* HomeViewController.storyboard */,
 			);
-			path = Home;
+			path = View;
 			sourceTree = "<group>";
 		};
 		92427BA2273082E9007358A4 /* Historic */ = {
@@ -283,22 +289,21 @@
 		92427BB4273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				92427BB5273082E9007358A4 /* Home */,
 				92427BBE273082E9007358A4 /* Historic */,
-				92427BC7273082E9007358A4 /* PreHomeViewController.swift */,
 				92427BC8273082E9007358A4 /* Terms */,
 				92427BCD273082E9007358A4 /* UserData */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		92427BB5273082E9007358A4 /* Home */ = {
+		92427BB5273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				92427BC7273082E9007358A4 /* PreHomeViewController.swift */,
 				92427BB6273082E9007358A4 /* HomeViewController.swift */,
 				92427BB7273082E9007358A4 /* Extensions */,
 			);
-			path = Home;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		92427BB7273082E9007358A4 /* Extensions */ = {
@@ -502,21 +507,11 @@
 		92427BE1273082E9007358A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				92427BE2273082E9007358A4 /* PreHomeViewModel.swift */,
-				92427BE3273082E9007358A4 /* Home */,
 				92427BE5273082E9007358A4 /* Historic */,
 				92427BE7273082E9007358A4 /* Terms */,
 				92427BE9273082E9007358A4 /* UserData */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		92427BE3273082E9007358A4 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				92427BE4273082E9007358A4 /* HomeViewModel.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		92427BE5273082E9007358A4 /* Historic */ = {
@@ -549,6 +544,25 @@
 				92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9294A39D27513E9E002991AC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				92427BA0273082E9007358A4 /* View */,
+				92427BB5273082E9007358A4 /* ViewController */,
+				9294A39E27513EB5002991AC /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9294A39E27513EB5002991AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				92427BE2273082E9007358A4 /* PreHomeViewModel.swift */,
+				92427BE4273082E9007358A4 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -683,6 +697,7 @@
 				92427BFE273082E9007358A4 /* HomeViewController+Binds.swift in Sources */,
 				92427C11273082E9007358A4 /* HistoricViewModel.swift in Sources */,
 				92427C04273082E9007358A4 /* TermsViewController.swift in Sources */,
+				9294A42727517043002991AC /* HomeViewCell.swift in Sources */,
 				92427C0D273082E9007358A4 /* UserDataViewController+Dialog.swift in Sources */,
 				92427C03273082E9007358A4 /* PreHomeViewController.swift in Sources */,
 				92427C05273082E9007358A4 /* TermsViewController+Binds.swift in Sources */,
@@ -695,6 +710,7 @@
 				92427BFD273082E9007358A4 /* HomeViewController+Dialog.swift in Sources */,
 				92427C07273082E9007358A4 /* UserDataViewController+ScrollView.swift in Sources */,
 				92427C12273082E9007358A4 /* TermsViewModel.swift in Sources */,
+				9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */,
 				92427C06273082E9007358A4 /* UserDataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
