@@ -34,7 +34,7 @@ PODS:
     - YDExtensions (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
     - YDWebSocket (~> 1.6.0)
-  - YDB2WCustomerIdentifier (1.6.0):
+  - YDB2WCustomerIdentifier (1.6.1):
     - YDB2WAssets (~> 1.6.0)
     - YDB2WColors (~> 1.6.0)
     - YDB2WModels (~> 1.6.0)
@@ -157,7 +157,7 @@ SPEC CHECKSUMS:
   YDB2WBrandManager: 003f5bdc114d4dfc8e5f2332f780c91336e1ce97
   YDB2WColors: d65cd1d7b675b18392c1b610315936be8ed00e70
   YDB2WComponents: b06369d1684f42dcc36edf0c847a3ee15779208e
-  YDB2WCustomerIdentifier: c866910e813c90b5acf559a553a8091587791e26
+  YDB2WCustomerIdentifier: 0ad94f6513b1e06aa143f1c77599cb2157dfe86f
   YDB2WDeepLinks: cdd94881b9e887e8684d30648e19899df9ed67b7
   YDB2WIntegration: eeaf2200f6ea3225a38ea7ef3828f91da4f2ea7c
   YDB2WModels: f302326fa3a65ad3e6a74b3446cc63a746350d95
