@@ -10,9 +10,7 @@ import YDB2WColors
 
 class HomeViewCell: UICollectionViewCell {
   
-  static let identifierCell = "HomeViewCell"
-  
-  // MARK: views
+  // MARK: Properties
   let card: UIView = {
     let card = UIView()
     card.layer.applyShadow(blur: 20)
@@ -32,7 +30,24 @@ class HomeViewCell: UICollectionViewCell {
     return view
   }()
   
-  // MARK: init
+  let newContainer: UIView = {
+    let view = UIView()
+    view.backgroundColor = YDColors.branding
+    view.layer.masksToBounds = true
+    view.layer.cornerRadius = 10
+    return view
+  }()
+
+  let newLabel: UILabel = {
+    let view = UILabel()
+    view.textColor = .white
+    view.textAlignment = .center
+    view.font = UIFont.systemFont(ofSize: 14)
+    view.text = "novo"
+    return view
+  }()
+  
+  // MARK: Life cycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     initView()
@@ -43,12 +58,19 @@ class HomeViewCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+}
+
+extension HomeViewCell {
+  
+  // MARK: Actions
   func initView() { }
   
   func setupViews() {
     self.addSubview(card)
     card.addSubview(imageView)
     card.addSubview(titleLabel)
+    card.addSubview(newContainer)
+    newContainer.addSubview(newLabel)
     
     card.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -73,11 +95,25 @@ class HomeViewCell: UICollectionViewCell {
       titleLabel.centerYAnchor.constraint(equalTo: card.centerYAnchor)
     ])
     
+    newContainer.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      newContainer.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
+      newContainer.topAnchor.constraint(equalTo: card.topAnchor, constant: 12),
+      newContainer.heightAnchor.constraint(equalToConstant: 22)
+    ])
+    
+    newLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      newLabel.centerYAnchor.constraint(equalTo: newContainer.centerYAnchor),
+      newLabel.leadingAnchor.constraint(equalTo: newContainer.leadingAnchor, constant: 12),
+      newLabel.trailingAnchor.constraint(equalTo: newContainer.trailingAnchor, constant: -12)
+    ])
+    
   }
   
   func populateView(item: ItensOffinlineAccount) {
     imageView.image = item.icon
     titleLabel.text = item.title
+    newContainer.isHidden = !item.new
   }
-  
 }

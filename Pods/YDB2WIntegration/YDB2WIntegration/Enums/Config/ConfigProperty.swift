@@ -51,6 +51,7 @@ public enum YDConfigProperty: String {
   case liveChatSendDelay
   case liveChatModerators = "chatModerators"
   case liveHighlightMessageEnabled = "fixedMessageEnabled"
+  case liveChatMaxNumberOfMessages
 
   case liveYouTubeCounter = "liveAmountPeopleWatching"
   case liveAmountPeopleWatchingPolling

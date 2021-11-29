@@ -6,249 +6,141 @@
 	<dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>Alamofire.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Cosmos.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>Cosmos.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Hero.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>Hero.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>Kingfisher.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>20</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>KingfisherWebP.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>KingfisherWebP.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-YDMOfflineAccount.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods-YDMOfflineAccount.xcscheme_^#shared#^_</key>
+		<key>Starscream.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WAssets-YDB2WAssets.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>YDB2WAssets-YDB2WAssets.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>21</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WAssets.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
-		</dict>
-		<key>YDB2WAssets.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WBrandManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
-		</dict>
-		<key>YDB2WBrandManager.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WColors.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
-		<key>YDB2WColors.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WComponents.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
-		</dict>
-		<key>YDB2WComponents.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>22</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WCustomerIdentifier.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WDeepLinks.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
-		</dict>
-		<key>YDB2WDeepLinks.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>23</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WIntegration.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
-		</dict>
-		<key>YDB2WIntegration.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WModels.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
-		</dict>
-		<key>YDB2WModels.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDB2WServices.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
-		</dict>
-		<key>YDB2WServices.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDExtensions-YDExtensions.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>19</integer>
-		</dict>
-		<key>YDExtensions-YDExtensions.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDExtensions.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
-		</dict>
-		<key>YDExtensions.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDLocationModule.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>20</integer>
-		</dict>
-		<key>YDLocationModule.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>19</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDMFindStore.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>21</integer>
-		</dict>
-		<key>YDMFindStore.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>24</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDMOfflineOrders.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>22</integer>
-		</dict>
-		<key>YDMOfflineOrders.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDQuiz.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>23</integer>
-		</dict>
-		<key>YDQuiz.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>YDUtilities.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>24</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>YDUtilities.xcscheme_^#shared#^_</key>
+		<key>YDWebSocket.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>curvyRoute.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>curvyRoute.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>libwebp.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
-		<key>libwebp.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict/>
 </dict>
 </plist>

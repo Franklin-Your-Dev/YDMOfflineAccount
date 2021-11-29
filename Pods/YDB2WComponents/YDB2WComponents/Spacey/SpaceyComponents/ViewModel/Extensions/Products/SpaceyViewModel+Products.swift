@@ -85,24 +85,19 @@ extension YDSpaceyViewModel {
 
     group.wait()
     
-    guard let componentChildrens = componentsList.value.at(at)?.component?.children else {
+    let allProductsComponents = getAllProductsComponentsType(at: at)
+    
+    if allProductsComponents.isEmpty {
       completion(.success([]))
       return
     }
     
-    var order: [String] = []
-    
-    componentChildrens.forEach {
-      if case .product(let product) = $0 {
-        order.append(product.productId)
-      }
-    }
+    let order: [String] = allProductsComponents.map { $0.productId }
     
     products = products.reordered(order: order)
     
-    for (index, curr) in products.enumerated() {
-      guard let component = componentChildrens.at(index)?
-              .get() as? YDSpaceyComponentProduct else {
+    for curr in products {
+      guard let component = allProductsComponents.first(where: { $0.productId == curr.id }) else {
         continue
       }
       
@@ -123,6 +118,25 @@ extension YDSpaceyViewModel {
   
   public func onTapProductCoupon(_ product: YDSpaceyProduct) {
     productDelegate?.onTapProductCoupon(product)
+  }
+}
+
+// MARK: Actions
+extension YDSpaceyViewModel {
+  private func getAllProductsComponentsType(at index: Int) -> [YDSpaceyComponentProduct] {
+    guard let componentChildrens = componentsList.value.at(index)?.component?.children else {
+      return []
+    }
+    
+    var products: [YDSpaceyComponentProduct] = []
+    
+    componentChildrens.forEach {
+      if case .product(let product) = $0 {
+        products.append(product)
+      }
+    }
+    
+    return products
   }
 }
 

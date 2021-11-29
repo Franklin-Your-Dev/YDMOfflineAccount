@@ -11,8 +11,6 @@ import YDB2WModels
 
 class HomeHeaderViewCell: UICollectionReusableView {
   
-  static let identifierCell = "HomeHeaderViewCell"
-  
   var userProfileView = YDUserProfileView()
   
   func initView(user: YDCurrentCustomer) {

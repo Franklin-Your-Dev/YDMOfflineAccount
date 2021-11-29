@@ -15,17 +15,20 @@ import YDB2WColors
 enum ItensOffilineAccountEnum {
   case store
   case clipboard
+  case customerIdentifier
 }
 
 class ItensOffinlineAccount {
   let icon: UIImage
   let title: String
   let type: ItensOffilineAccountEnum
+  let new : Bool
   
-  init(icon: UIImage, title: String, type: ItensOffilineAccountEnum) {
+  init(icon: UIImage, title: String, type: ItensOffilineAccountEnum, new: Bool) {
     self.icon = icon
     self.title = title
     self.type = type
+    self.new = new
   }
 }
 
@@ -48,12 +51,14 @@ class HomeViewController: UIViewController {
     ItensOffinlineAccount(
       icon: YDAssets.Images.store!,
       title: "suas compras nas lojas físicas",
-      type: .store
+      type: .store,
+      new: false
     ),
     ItensOffinlineAccount(
       icon: YDAssets.Images.clipboard!,
       title: "seu histórico de dados informados nas lojas",
-      type: .clipboard
+      type: .clipboard,
+      new: false
     )
   ]
   
@@ -95,14 +100,17 @@ extension HomeViewController {
   
   func buildList() {
     
+    if true {
+      let customerIdentifier = ItensOffinlineAccount(
+        icon: YDAssets.Images.qrCodeCard!,
+        title: "identifique-se aqui e facilite suas compras nas lojas físicas :)",
+        type: .customerIdentifier,
+        new: true
+      )
+      listItensOffiline.insert(customerIdentifier, at: 0)
+    }
+    
   }
-  
-  //  @objc func onCardAction(_ sender: UIGestureRecognizer) {
-  //    guard let tag = sender.view?.tag else { return }
-  //
-  //    //
-  //    viewModel?.onCard(tag: tag)
-  //  }
   
   func toggleNavShadow(_ show: Bool) {
     if show {
@@ -114,84 +122,5 @@ extension HomeViewController {
         self?.shadowView.layer.shadowOpacity = 0
       }
     }
-  }
-}
-
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-  
-  func setupCollectionView() {
-    
-    let layout  = UICollectionViewFlowLayout()
-    layout.scrollDirection = .vertical
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
-    collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    
-    collectionView!.register(HomeViewCell.self,
-                             forCellWithReuseIdentifier: HomeViewCell.identifierCell)
-    
-    collectionView?.register(HomeHeaderViewCell.self,
-                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                             withReuseIdentifier: HomeHeaderViewCell.identifierCell)
-    
-    collectionView!.delegate = self
-    collectionView!.dataSource = self
-    collectionView!.backgroundColor = .red
-    
-    self.view.addSubview(collectionView!)
-    
-    collectionView?.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      collectionView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-      collectionView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-      collectionView!.topAnchor.constraint(equalTo: self.view.topAnchor),
-      collectionView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-    ])
-    
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      numberOfItemsInSection section: Int) -> Int {
-    return listItensOffiline.count
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewCell.identifierCell, for: indexPath) as! HomeViewCell
-    cell.populateView(item: (listItensOffiline[indexPath.row]))
-    return cell
-  }
-  
-
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      viewForSupplementaryElementOfKind kind: String,
-                      at indexPath: IndexPath) -> UICollectionReusableView {
-    
-    let header = collectionView.dequeueReusableSupplementaryView(
-      ofKind: UICollectionView.elementKindSectionHeader,
-      withReuseIdentifier: HomeHeaderViewCell.identifierCell,
-      for: indexPath) as! HomeHeaderViewCell
-    
-    header.initView(user: viewModel!.currentUser)
-    
-    return header
-    
-  }
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: view.frame.size.width, height: 150)
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-      
-    return CGSize(width: view.frame.size.width, height: 140)
   }
 }

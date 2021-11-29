@@ -12,28 +12,72 @@ public extension Date {
   func toFormat(_ format: String = "yyyy-MM-dd") -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = format
+    dateFormatter.locale = Locale(identifier: "pt_BR")
+//    dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
     return dateFormatter.string(from: self)
+  }
+  
+  func convertToSaoPauloTimeZone() -> Date? {
+    guard let saoPauloTimeZone = TimeZone(identifier: "America/Sao_Paulo") else { return nil }
+    
+    let targetOffset = TimeInterval(saoPauloTimeZone.secondsFromGMT(for: self))
+    let localOffeset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT(for: self))
+
+    return self.addingTimeInterval(targetOffset - localOffeset)
   }
 
   var calendar: Calendar {
-    // Workaround to segfault on corelibs foundation https://bugs.swift.org/browse/SR-10147
-    return Calendar(identifier: Calendar.current.identifier)
+    var calendary = Calendar(identifier: .gregorian)
+    calendary.locale = Locale(identifier: "pt_BR")
+    
+    if let zone = TimeZone(identifier: "America/Sao_Paulo") {
+      calendary.timeZone = zone
+    }
+    
+    return calendary
+  }
+  
+  var saoPauloDate: Date? {
+    guard let saoPauloTimeZone = TimeZone(identifier: "America/Sao_Paulo") else { return nil }
+    let now = Date()
+    let targetOffset = TimeInterval(saoPauloTimeZone.secondsFromGMT(for: now))
+    let localOffeset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT(for: now))
+
+    return now.addingTimeInterval(targetOffset - localOffeset)
   }
 
   var isInFuture: Bool {
-    return self > Date()
+    guard let saoPauloDate = self.saoPauloDate,
+          let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return normalizedDate > saoPauloDate
   }
 
   var isInPast: Bool {
-    return self < Date()
+    guard let saoPauloDate = self.saoPauloDate,
+          let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return normalizedDate < saoPauloDate
   }
 
   var isInToday: Bool {
-    return calendar.isDateInToday(self)
+    guard let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDateInToday(normalizedDate)
   }
 
   var isInYesterday: Bool {
-    return calendar.isDateInYesterday(self)
+    guard let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDateInYesterday(normalizedDate)
   }
 
   /// SwifterSwift: Check if date is within tomorrow.
@@ -41,32 +85,59 @@ public extension Date {
   ///   Date().isInTomorrow -> false
   ///
   var isInTomorrow: Bool {
-    return calendar.isDateInTomorrow(self)
+    guard let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDateInTomorrow(normalizedDate)
   }
 
   /// SwifterSwift: Check if date is within a weekend period.
   var isInWeekend: Bool {
-    return calendar.isDateInWeekend(self)
+    guard let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDateInWeekend(normalizedDate)
   }
 
   /// SwifterSwift: Check if date is within a weekday period.
   var isWorkday: Bool {
-    return !calendar.isDateInWeekend(self)
+    guard let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return !calendar.isDateInWeekend(normalizedDate)
   }
 
   /// SwifterSwift: Check if date is within the current week.
   var isInCurrentWeek: Bool {
-    return calendar.isDate(self, equalTo: Date(), toGranularity: .weekOfYear)
+    guard let saoPauloDate = self.saoPauloDate,
+      let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDate(normalizedDate, equalTo: saoPauloDate, toGranularity: .weekOfYear)
   }
 
   /// SwifterSwift: Check if date is within the current month.
   var isInCurrentMonth: Bool {
-    return calendar.isDate(self, equalTo: Date(), toGranularity: .month)
+    guard let saoPauloDate = self.saoPauloDate,
+      let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDate(normalizedDate, equalTo: saoPauloDate, toGranularity: .month)
   }
 
   /// SwifterSwift: Check if date is within the current year.
   var isInCurrentYear: Bool {
-    return calendar.isDate(self, equalTo: Date(), toGranularity: .year)
+    guard let saoPauloDate = self.saoPauloDate,
+      let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return calendar.isDate(normalizedDate, equalTo: saoPauloDate, toGranularity: .year)
   }
 
   /// SwifterSwift: ISO8601 string of format (yyyy-MM-dd'T'HH:mm:ss.SSS) from date.
@@ -74,16 +145,20 @@ public extension Date {
   ///   Date().iso8601String -> "2017-01-12T14:51:29.574Z"
   ///
   var iso8601String: String {
-    // https://github.com/justinmakaila/NSDate-ISO-8601/blob/master/NSDateISO8601.swift
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.locale = Locale(identifier: "pt_BR")
     dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+//    dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
 
     return dateFormatter.string(from: self).appending("Z")
   }
 
   func isBetween(_ date: Date, and date2: Date) -> Bool {
-    return self >= date && self <= date2
+    guard let normalizedDate = convertToSaoPauloTimeZone() else {
+      return false
+    }
+    
+    return normalizedDate >= date && normalizedDate <= date2
   }
 }

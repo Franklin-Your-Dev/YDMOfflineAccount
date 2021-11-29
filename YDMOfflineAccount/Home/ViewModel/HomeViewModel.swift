@@ -18,6 +18,7 @@ protocol HomeViewModelNavigationDelegate {
   func onBack()
   func onExit()
   func openUserData()
+  func openCustomerIdentifier()
   func openOfflineOrders()
 }
 
@@ -28,7 +29,7 @@ protocol HomeViewModelDelegate {
 
   func onExit()
   func trackState()
-  func onCard(tag: Int)
+  func onCard(tag: ItensOffilineAccountEnum)
 }
 
 // MARK: ViewModel
@@ -83,16 +84,13 @@ extension HomeViewModel: HomeViewModelDelegate {
     YDIntegrationHelper.shared.trackEvent(withName: .offlineAccountPerfil, ofType: .state)
   }
 
-  func onCard(tag: Int) {
+  func onCard(tag: ItensOffilineAccountEnum) {
     switch tag {
-      case 1:
+      case .customerIdentifier:
         // QR Card
-        error.value = (
-          "poooxa, ainda não temos seu cadastro completo",
-          "E pra mantermos a segurança dos seus dados, você poderá consultar mais informações com nosso atendimento, através do e-mail: atendimento.acom@americanas.com"
-        )
-
-      case 2:
+        navigation.openCustomerIdentifier()
+        
+      case .store:
         // User Data
         let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "meus dados"])
         
@@ -105,7 +103,7 @@ extension HomeViewModel: HomeViewModelDelegate {
         
         navigation.openUserData()
 
-      case 3:
+      case .clipboard:
         // Offline orders
         let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "minhas compras"])
         
@@ -119,6 +117,10 @@ extension HomeViewModel: HomeViewModelDelegate {
         navigation.openOfflineOrders()
 
       default:
+        //        error.value = (
+        //          "poooxa, ainda não temos seu cadastro completo",
+        //          "E pra mantermos a segurança dos seus dados, você poderá consultar mais informações com nosso atendimento, através do e-mail: atendimento.acom@americanas.com"
+        //        )
         break
     }
   }

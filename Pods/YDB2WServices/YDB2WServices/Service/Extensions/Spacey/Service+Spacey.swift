@@ -101,7 +101,7 @@ public extension YDB2WService {
         withHeaders: nil,
         andParameters: context
       ) { response in
-        guard let data = response.data else {
+        guard let data = try? response.result.get() else {
           completion(.failure(.badRequest))
           return
         }

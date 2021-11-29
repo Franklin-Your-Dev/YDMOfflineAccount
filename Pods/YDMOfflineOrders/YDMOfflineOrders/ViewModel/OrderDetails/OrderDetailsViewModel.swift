@@ -11,6 +11,7 @@ import YDB2WServices
 import YDExtensions
 import YDB2WModels
 import YDUtilities
+import YDB2WComponents
 
 // MARK: Details navigation
 protocol OrderDetailsNavigation {
@@ -40,6 +41,7 @@ protocol OrderDetailsViewModelDelegate: AnyObject {
   func getProducts()
   func openInvoice()
   func openTaxCoupon()
+  func openDescriptionDialog()
   func openNPSView()
 }
 
@@ -162,18 +164,7 @@ extension OrderDetailsViewModel: OrderDetailsViewModelDelegate {
   func goBack() {
     navigation.onBack()
   }
-
-  func openDetailsForProduct(_ product: YDOfflineOrdersProduct) {
-//    product.products?.online?.isAvailable = false
-
-    if product.products?.online?.isAvailable == false {
-      snackBar.value = ("Ops! O produto escolhido está indisponível no momento.", "ok, entendi")
-      return
-    }
-
-    navigation.openDetailsForProduct(product, withinOrder: order.value)
-  }
-
+  
   func getProducts() {
     guard let products = order.value.products,
           let storeId = order.value.storeId
@@ -196,6 +187,22 @@ extension OrderDetailsViewModel: OrderDetailsViewModelDelegate {
           self.useOfflineProducts()
       }
     }
+  }
+
+  func openDetailsForProduct(_ product: YDOfflineOrdersProduct) {
+//    product.products?.online?.isAvailable = false
+
+    if product.products?.online?.isAvailable == false {
+      snackBar.value = ("Ops! O produto escolhido está indisponível no momento.", "ok, entendi")
+      return
+    }
+    
+    let parameters = TrackEvents.offlineOrdersOrderDetails.parameters(
+      body: ["action": "clique no produto"]
+    )
+    trackEvent(.offlineOrdersOrderDetails, ofType: .action, withParameters: parameters)
+
+    navigation.openDetailsForProduct(product, withinOrder: order.value)
   }
   
   func openInvoice() {
@@ -222,6 +229,28 @@ extension OrderDetailsViewModel: OrderDetailsViewModelDelegate {
     navigation.openTaxCoupon(from: order.value)
   }
   
+  func openDescriptionDialog() {
+    let title = "o que é cada um desses documentos?"
+    let message = """
+    Cupom fiscal: é um comprovante de venda e pode ser utilizado para realizar trocas dentro das lojas, ele é auxiliar da nota fiscal.
+
+    Nota fiscal: é um documento oficial que pode ser utilizado para trocas com o fabricante, fazer seguros e usar para assistência técnica.
+    """
+    
+    YDDialog().start(
+      ofType: .simple,
+      customTitle: title,
+      customMessage: message,
+      messagesToBold: ["Cupom fiscal:", "Nota fiscal:"]
+    )
+    
+    let parameters = TrackEvents.offlineOrdersOrderDetails.parameters(
+      body: ["action": "entenda as diferenças"]
+    )
+    
+    trackEvent(.offlineOrdersOrderDetails, ofType: .action, withParameters: parameters)
+  }
+  
   func checkIfNeedToShowNPSView() {
     let today = Date()
     
@@ -244,6 +273,9 @@ extension OrderDetailsViewModel: OrderDetailsViewModelDelegate {
 //    print("already replied", YDManager.OfflineOrders.shared.alreadyRepliedNPS(for: "\(order.value.cupom!)"))
     
 //    let remainingDays = 0
+    
+    trackEvent(.offlineOrdersNPS, ofType: .state)
+    
     showNPSViewWithRemainingDays.value = remainingDays
   }
   

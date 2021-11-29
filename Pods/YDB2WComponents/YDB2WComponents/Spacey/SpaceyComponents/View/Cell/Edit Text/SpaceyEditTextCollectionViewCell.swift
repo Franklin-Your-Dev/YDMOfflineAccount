@@ -1,8 +1,8 @@
 //
 //  SpaceyEditTextCollectionViewCell.swift
-//  YDSpacey
+//  YDB2WComponents
 //
-//  Created by Douglas Hennrich on 01/06/21.
+//  Created by Douglas Hennrich on 03/11/21.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ import YDB2WColors
 
 class SpaceyEditTextCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
+  private let padding: CGFloat = 16
   var callback: ((_ answer: String?) -> Void)?
   var maxCharacters = 0
 
@@ -23,8 +24,14 @@ class SpaceyEditTextCollectionViewCell: UICollectionViewCell {
     width.isActive = true
     return width
   }()
-  let charactersCountLabel = UILabel()
+  
+  let containerView = UIView()
+  
+  let titleWithOptionalView = YDSpaceyNPSTitleWithOptionalView()
+  
   let editText = YDTextView()
+  
+  let charactersCountLabel = UILabel()
 
   // MARK: Init
   override init(frame: CGRect) {
@@ -51,50 +58,89 @@ class SpaceyEditTextCollectionViewCell: UICollectionViewCell {
   // MARK: Actions
   func configure(with component: YDSpaceyComponentNPSQuestion) {
     maxCharacters = component.maxCharacter ?? 150
-    charactersCountLabel.text = "0/\(maxCharacters)"
+    charactersCountLabel.text = "máximo de \(maxCharacters) caracteres"
     editText.placeHolder = component.hint ?? ""
+    
+    titleWithOptionalView.configure(with: component)
+    titleWithOptionalView.titleLabel.text = "deixe um comentário"
   }
 }
 
 // MARK: Layout
 extension SpaceyEditTextCollectionViewCell {
   func configureLayout() {
-    configureCountLabel()
+    configureContainerView()
+    configureTitleWithOptionalView()
     configureEditText()
+    configureCountLabel()
   }
-
-  func configureCountLabel() {
-    contentView.addSubview(charactersCountLabel)
-    charactersCountLabel.font = .systemFont(ofSize: 14)
-    charactersCountLabel.textColor = YDColors.Gray.light
-    charactersCountLabel.textAlignment = .right
-
-    charactersCountLabel.translatesAutoresizingMaskIntoConstraints = false
+  
+  private func configureContainerView() {
+    contentView.addSubview(containerView)
+    containerView.backgroundColor = .white
+    containerView.layer.cornerRadius = 12
+    containerView.layer.applyShadow(y: 1, blur: 8, spread: -1)
+    
+    containerView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      charactersCountLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      charactersCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      charactersCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-      charactersCountLabel.heightAnchor.constraint(equalToConstant: 16)
+      containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
+      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+      containerView.trailingAnchor.constraint(
+        equalTo: contentView.trailingAnchor,
+        constant: -padding
+      ),
+      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2)
     ])
   }
-
-  func configureEditText() {
-    contentView.addSubview(editText)
+  
+  private func configureTitleWithOptionalView() {
+    containerView.addSubview(titleWithOptionalView)
+    
+    NSLayoutConstraint.activate([
+      titleWithOptionalView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
+      titleWithOptionalView.leadingAnchor.constraint(
+        equalTo: containerView.leadingAnchor,
+        constant: padding
+      ),
+      titleWithOptionalView.trailingAnchor.constraint(
+        equalTo: containerView.trailingAnchor,
+        constant: -padding
+      )
+    ])
+  }
+  
+  private func configureEditText() {
+    containerView.addSubview(editText)
     editText.delegate = self
     editText.tintColor = YDColors.Gray.light
     editText.translatesAutoresizingMaskIntoConstraints = false
 
     NSLayoutConstraint.activate([
       editText.topAnchor.constraint(
-        equalTo: charactersCountLabel.bottomAnchor,
-        constant: 6
+        equalTo: titleWithOptionalView.bottomAnchor,
+        constant: 8
       ),
-      editText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      editText.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
       editText.trailingAnchor.constraint(
-        equalTo: contentView.trailingAnchor,
-        constant:  -16
-      ),
-      editText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -1)
+        equalTo: containerView.trailingAnchor,
+        constant:  -padding
+      )
+    ])
+  }
+
+  private func configureCountLabel() {
+    containerView.addSubview(charactersCountLabel)
+    charactersCountLabel.font = .systemFont(ofSize: 12)
+    charactersCountLabel.textColor = YDColors.Gray.light
+    charactersCountLabel.textAlignment = .left
+
+    charactersCountLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      charactersCountLabel.topAnchor.constraint(equalTo: editText.bottomAnchor, constant: 4),
+      charactersCountLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 22),
+      charactersCountLabel.trailingAnchor.constraint(equalTo: editText.trailingAnchor),
+      charactersCountLabel.heightAnchor.constraint(equalToConstant: padding),
+      charactersCountLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
     ])
   }
 }
@@ -105,10 +151,10 @@ extension SpaceyEditTextCollectionViewCell: YDTextViewDelegate {
 
   func textViewDidChangeSelection(_ textView: UITextView) {
     if textView.text == editText.placeHolder {
-      charactersCountLabel.text = "0/\(maxCharacters)"
+//      charactersCountLabel.text = "máximo de \(maxCharacters) caracteres"
 
     } else {
-      charactersCountLabel.text = "\(textView.text.count)/\(maxCharacters)"
+//      charactersCountLabel.text = "\(textView.text.count)/\(maxCharacters)"
 
       callback?(textView.text)
     }

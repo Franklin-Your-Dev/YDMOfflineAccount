@@ -20,19 +20,19 @@ public class YDQuizCoordinator {
   var rootViewController: UIViewController {
     return self.navigationController
   }
-
+  
   lazy var navigationController: UINavigationController = {
     let nav = UINavigationController()
     nav.navigationBar.prefersLargeTitles = false
-
+    
     if #available(iOS 13.0, *) {
       let appearanceStandard = UINavigationBarAppearance()
-
+      
       appearanceStandard.titleTextAttributes = [.foregroundColor:  YDColors.black]
       appearanceStandard.configureWithTransparentBackground()
       appearanceStandard.shadowImage = UIImage()
       appearanceStandard.shadowColor = .clear
-
+      
       nav.navigationBar.compactAppearance = appearanceStandard
       nav.navigationBar.standardAppearance = appearanceStandard
       nav.navigationBar.scrollEdgeAppearance = appearanceStandard
@@ -44,14 +44,14 @@ public class YDQuizCoordinator {
       nav.navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
       nav.navigationBar.backgroundColor = .clear
     }
-
+    
     nav.navigationBar.tintColor = YDColors.Gray.light
     return nav
   }()
-
+  
   // MARK: Init
   public init() {}
-
+  
   // MARK: Actions
   public func start(user: YDCurrentCustomer) {
     if !YDManager.Quiz.shared.checkIfCanOpen() {
@@ -60,13 +60,13 @@ public class YDQuizCoordinator {
     }
     
     let viewModel = YDQuizHomeViewModel(navigation: self, user: user)
-
+    
     let viewController = YDQuizHomeViewController()
     viewController.viewModel = viewModel
-
+    
     let topViewController = UIApplication.shared.windows.first?
       .rootViewController?.topMostViewController()
-
+    
     navigationController.viewControllers = [viewController]
     topViewController?.present(navigationController, animated: true)
   }
@@ -109,20 +109,14 @@ private func openDialog(withType type: QuizCallbackType) {
     switch type {
       case .wrongAnswer(let autoExit):
         let title = autoExit ?
-          "poooxa, ainda não temos seu cadastro completo" :
-          "poooxa, não encontramos os seus dados aqui"
-        let message = autoExit ?
-          "Pra completar o seu cadastro entre em contato com nosso atendimento, através do e-mail: atendimento.acom@americanas.com" :
-          "Você pode consultar mais informações com nosso atendimento, através do e-mail: atendimento.acom@americanas.com"
+          "poxa, não encontramos os seus dados" :
+          "poxa, ainda não temos seu cadastro completo"
         
-        let parameters = autoExit ?
-          TrackEvents.quizIncompleteRegistration.parameters(body: [:]) :
-          TrackEvents.quizRegistrationNotFound.parameters(body: [:])
+        let message = "Mas, não se preocupe: pra gente te ajudar a entender o que aconteceu, mande um e-mail pra atendimento.acom@americanas.com"
         
         YDIntegrationHelper.shared.trackEvent(
           withName: autoExit ? .quizIncompleteRegistration : .quizRegistrationNotFound,
-          ofType: .action,
-          withParameters: parameters
+          ofType: .state
         )
         
         let dialog = YDDialog()
@@ -132,6 +126,26 @@ private func openDialog(withType type: QuizCallbackType) {
             object: nil,
             userInfo: ["autoExit": autoExit]
           )
+        }
+        
+        dialog.onLinkCallback = { linkOpt in
+          guard let link = linkOpt,
+                let url = URL(string: link)
+          else {
+            return
+          }
+          
+          let parameters = autoExit ?
+            TrackEvents.quizIncompleteRegistration.parameters(body: [:]) :
+            TrackEvents.quizRegistrationNotFound.parameters(body: [:])
+          
+          YDIntegrationHelper.shared.trackEvent(
+            withName: autoExit ? .quizIncompleteRegistration : .quizRegistrationNotFound,
+            ofType: .action,
+            withParameters: parameters
+          )
+          
+          UIApplication.shared.open(url)
         }
         
         dialog.start(

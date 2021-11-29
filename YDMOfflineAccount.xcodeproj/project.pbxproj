@@ -51,6 +51,7 @@
 		92427C14273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */; };
 		9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42427517043002991AC /* HomeHeaderViewCell.swift */; };
 		9294A42727517043002991AC /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42527517043002991AC /* HomeViewCell.swift */; };
+		9294A42D275319E7002991AC /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */; };
 		A1E4DDE26F9FE82B7F3425D1 /* Pods_YDMOfflineAccount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMStoreModeOfflineAccountCoordinator.swift; sourceTree = "<group>"; };
 		9294A42427517043002991AC /* HomeHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewCell.swift; sourceTree = "<group>"; };
 		9294A42527517043002991AC /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
+		9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 		92427BB7273082E9007358A4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9294A42B275319CE002991AC /* CollectionView */,
 				92427BB8273082E9007358A4 /* ScrollView */,
 				92427BBA273082E9007358A4 /* Dialog */,
 				92427BBC273082E9007358A4 /* Binds */,
@@ -565,6 +568,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9294A42B275319CE002991AC /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -684,6 +695,7 @@
 				92427BFC273082E9007358A4 /* HomeViewController+ScrollView.swift in Sources */,
 				92427C0A273082E9007358A4 /* UserDataTermsAndButtonTableViewCell.swift in Sources */,
 				92427BED273082E9007358A4 /* YDErrorView.swift in Sources */,
+				9294A42D275319E7002991AC /* HomeViewController+CollectionView.swift in Sources */,
 				92427C0B273082E9007358A4 /* UserDataInfoTableViewCell.swift in Sources */,
 				92427C0C273082E9007358A4 /* UserDataMarketingTableViewCell.swift in Sources */,
 				92427C13273082E9007358A4 /* UserDataViewModel.swift in Sources */,

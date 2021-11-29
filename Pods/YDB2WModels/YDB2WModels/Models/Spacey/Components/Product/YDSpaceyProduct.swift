@@ -34,9 +34,7 @@ public class YDSpaceyProduct: Codable {
   
   public var hasCoupon: Bool {
     guard let couponName = self.couponName,
-          !couponName.isEmpty,
-          let couponDeeplink = self.couponDeeplink,
-          !couponDeeplink.isEmpty else {
+          !couponName.isEmpty else {
       return false
     }
     

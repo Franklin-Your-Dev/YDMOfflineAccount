@@ -25,7 +25,7 @@ public enum TrackEvents: String {
   case productDetails = "ACOM:LASA-Scan:Produto:Detalhes"
 
   // Live
-  case pageView = "ACOM:hotsite:youtube-live"
+  case pageView = "ACOM:Live:youtube-live"
   case playVideo = "ACOM:Video:Playing"
   case productSelected = "ACOM:LiveCarousel:ProductSelected"
   case addToCart
@@ -33,41 +33,41 @@ public enum TrackEvents: String {
   case liveNPS = "quizz"
   case sendLike = "MobileApps:LiveLikes"
   
-  case hotsiteLive = "ACOM:hotsite:aovivo"
+  case hotsiteLive = "ACOM:Live"
 
   // Pre Live
-  case preLivePageView
+  case preLivePageView = "ACOM:Live:Pre"
   case preLiveVideoPlay
   case preLiveSchedulePushNotification
   case preLiveAddToCalendar
   case preLiveOpenNextLives
   
   // After Live
-  case afterLive = "ACOM:hotsite:aovivo:after"
+  case afterLive = "ACOM:Live:Pos"
   case afterLiveAddToCalendar
   case afterLiveSchedulePushNotification
   case afterLiveOpenNextLives
 
   // Next Lives
-  case nextLivesPageView = "ACOM:Hotsite:youtube-live:proximas-lives"
-  case nextLivesAddToCalendar = "ACOM:Hotsite:youtube-live:proximas-lives:adicionar-calendario"
+  case nextLivesPageView = "ACOM:Live:youtube-live:proximas-lives"
+  case nextLivesAddToCalendar = "ACOM:Live:youtube-live:proximas-lives:adicionar-calendario"
 
   // Store Mode
-  case storePageView = "ACOM:MODOLOJA:Home"
-  case storeModeInsideLasa = "ACOM:MODOLOJA:UsaDentroDaLoja"
-  case storeOpenBasket = "ACOM:MODOLOJA:VerProdutos"
-  case storeOpenBooklet = "ACOM:MODOLOJA:EncarteDasLojas"
-  case storeOnScan = "ACOM:MODOLOJA:Scan"
-  case storeOnScanInsideLasa = "ACOM:MODOLOJA:ScanDentroDaLoja"
+  case storePageView = "ACOM:MODOLOJA-Home"
+  case storeModeInsideLasa = "ACOM:MODOLOJA-UsaDentroDaLoja"
+  case storeOpenBasket = "ACOM:MODOLOJA-VerProdutos"
+  case storeOpenBooklet = "ACOM:MODOLOJA-EncarteDasLojas"
+  case storeOnScan = "ACOM:MODOLOJA-Scan"
+  case storeOnScanInsideLasa = "ACOM:MODOLOJA-ScanDentroDaLoja"
   case storeOpenMap = "O2O-Home-Mapa"
 
   // Store Mode NPS
-  case storeModeNPS = "ACOM:ModoLoja:NpsLoja"
+  case storeModeNPS = "ACOM:MODOLOJA-NpsLoja"
   case sendNPS = "StoreModeNps"
 
   // Find a Store
   case findStore = "ACOM:MODOLOJA-Mapa"
-  case findStoreViewDenied = "ACOM:StoreFinder:SemPermissao"
+  case findStoreViewDenied = "ACOM:MODOLOJA-MapaSemLocalizacao"
 
   // Offline Account
   case offlineAccountPerfil = "ACOM:MODOLOJA-MeuPerfil"

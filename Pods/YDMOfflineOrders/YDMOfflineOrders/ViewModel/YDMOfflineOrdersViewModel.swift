@@ -311,6 +311,17 @@ extension YDMOfflineOrdersViewModel {
       name: YDConstants.Notification.QuizSuccess,
       object: nil
     )
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(onQuizExit),
+      name: YDConstants.Notification.QuizExit,
+      object: nil
+    )
+  }
+  
+  @objc func onQuizExit() {
+    onBack()
   }
   
   @objc func onQuizSuccess() {
@@ -332,6 +343,7 @@ extension YDMOfflineOrdersViewModel: YDMOfflineOrdersViewModelDelegate {
   func onBack() {
     ordersManager.cleanUp()
     navigation.onBack()
+    NotificationCenter.default.removeObserver(self)
   }
   
   func login() {
@@ -355,16 +367,20 @@ extension YDMOfflineOrdersViewModel: YDMOfflineOrdersViewModelDelegate {
           self.logger.error(error.message)
           self.loading.value = false
           
-          if case .permanentRedirect = error {
-            if self.quizEnabled {
-              self.navigation.openQuiz()
-            } else {
-              self.errorDialog.value = self.errorDialogIncompletePerfilMessage
-            }
-            return
+          switch error {
+            case .permanentRedirect:
+              if self.quizEnabled {
+                self.navigation.openQuiz()
+              } else {
+                self.errorDialog.value = self.errorDialogIncompletePerfilMessage
+              }
+              
+            case .timeout:
+              self.error.value = "Timeout"
+              
+            default:
+              self.errorDialog.value = self.errorDialogPerfilNotFoundMessage
           }
-          
-          self.errorDialog.value = self.errorDialogPerfilNotFoundMessage
       }
     }
   }

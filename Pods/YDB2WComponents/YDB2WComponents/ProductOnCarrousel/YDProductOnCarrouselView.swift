@@ -68,6 +68,15 @@ class YDProductOnCarrouselView: UIView {
     productPriceInstallmentLabel.isHidden = true
     productPriceInstallmentLabel.text = nil
     
+    let attributedString = NSAttributedString(
+      string: "",
+      attributes: [
+        NSAttributedString.Key.foregroundColor: YDColors.white,
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .medium)
+      ]
+    )
+    couponButton.setAttributedTitle(attributedString, for: .normal)
+    
     setTicketView(hidden: true)
   }
   

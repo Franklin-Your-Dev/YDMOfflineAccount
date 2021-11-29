@@ -24,6 +24,9 @@ public extension String {
   func date(withFormat format: String) -> Date? {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = format
+    dateFormatter.locale = Locale(identifier: "pt_BR")
+    dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
+    
     return dateFormatter.date(from: self)
   }
 
