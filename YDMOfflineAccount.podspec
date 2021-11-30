@@ -34,6 +34,7 @@ Pod::Spec.new do |spec|
   spec.dependency "YDB2WServices", "~> 1.6.0"
   spec.dependency "YDQuiz", "~> 1.6.0"
   spec.dependency "YDB2WColors", "~> 1.6.0"
+  spec.dependency "YDB2WCustomerIdentifier", "~> 1.6.0"
 
   spec.dependency "Hero"
 end

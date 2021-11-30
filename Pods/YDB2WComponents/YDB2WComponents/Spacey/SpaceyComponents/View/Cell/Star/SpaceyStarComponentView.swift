@@ -66,8 +66,8 @@ extension SpaceyStarComponentView {
 
   func configureTitle() {
     addSubview(titleLabel)
-    titleLabel.font = .systemFont(ofSize: 14)
-    titleLabel.textColor = YDColors.black
+    titleLabel.font = .boldSystemFont(ofSize: 14)
+    titleLabel.textColor = YDColors.Gray.medium
     titleLabel.textAlignment = .left
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false

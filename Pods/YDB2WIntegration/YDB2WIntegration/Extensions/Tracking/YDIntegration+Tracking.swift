@@ -28,37 +28,56 @@ public extension YDIntegrationHelper {
 //    }
     
     let eventName = name.eventName
+    let pageType = payload["pageType"] as? String
+    let action = payload["ea"] as? String
+    let category = payload["ec"] as? String
+    let label = payload["el"] as? String
 
     if type == .action {
-      trackAdobeAction(actionName: eventName, parameters: payload)
-      trackGAEvent(actionName: eventName, parameters: payload)
+      trackGAEvent(
+        eventName: eventName,
+        pageType: pageType,
+        action: action,
+        category: category,
+        label: label,
+        customData: payload
+      )
 
       trackFacebookEvent(eventName: eventName, parameters: payload)
       trackFirebaseEvent(eventName: eventName, parameters: payload)
     } else if type == .state {
-      trackAdobeState(stateName: eventName, parameters: payload)
-      trackGAScreen(stateName: eventName, parameters: payload)
+      trackGAScreen(
+        eventName: eventName,
+        pageType: pageType,
+        customData: payload
+      )
     }
   }
 }
 
 extension YDIntegrationHelper {
   // MARK: Actions
-  func trackAdobeAction(actionName: String, parameters: [String: Any]?) {
-    trackingDelegate?.trackAdobeAction(actionName: actionName, parameters: parameters)
-  }
-
-  func trackGAEvent(actionName: String, parameters: [String: Any]?) {
-    trackingDelegate?.trackGAEvent(actionName: actionName, parameters: parameters)
+  func trackGAEvent(
+    eventName: String,
+    pageType: String?,
+    action: String?,
+    category: String?,
+    label: String?,
+    customData: [String: Any]? = [:]
+  ) {
+    trackingDelegate?.trackGAEvent(
+      action: action,
+      category: category,
+      eventLabel: label,
+      eventName: eventName,
+      pageType: pageType,
+      customData: customData
+    )
   }
 
   // MARK: State
-  func trackAdobeState(stateName: String, parameters: [String: Any]?) {
-    trackingDelegate?.trackAdobeState(stateName: stateName, parameters: parameters)
-  }
-
-  func trackGAScreen(stateName: String, parameters: [String: Any]?) {
-    trackingDelegate?.trackGAScreen(stateName: stateName, parameters: parameters)
+  func trackGAScreen(eventName: String, pageType: String?, customData: [String : Any]? = [:]) {
+    trackingDelegate?.trackGAScreen(eventName: eventName, pageType: pageType, customData: customData)
   }
 
   // MARK: Event

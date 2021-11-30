@@ -43,7 +43,9 @@ public class YDChatMessage: Codable {
 
   // MARK: Computed variables
   public var hourAndMinutes: String {
-    let date = self.date ?? Date().iso8601String
+    guard let now = Date().convertToSaoPauloTimeZone() else { return "" }
+    
+    let date = self.date ?? now.iso8601String
     let dateFormatterGet = ISO8601DateFormatter()
     dateFormatterGet.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 

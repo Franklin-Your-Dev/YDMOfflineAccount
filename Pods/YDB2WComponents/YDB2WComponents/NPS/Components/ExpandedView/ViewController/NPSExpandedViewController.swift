@@ -15,7 +15,7 @@ public class YDNPSExpandedViewController: UIViewController {
   weak var spaceyViewModel: YDSpaceyViewModelDelegate?
   
   // MARK: Components
-  let sendButton = YDWireButton(withTitle: "enviar avaliação")
+  let sendButton = YDButton(withTitle: "enviar avaliação")
   public var spaceyViewController: YDSpaceyViewController?
   let bottomShadowView = UIView()
   let shimmerView = YDNPSExpandedShimmerView()
@@ -41,7 +41,27 @@ public class YDNPSExpandedViewController: UIViewController {
 // MARK: Public actions
 public extension YDNPSExpandedViewController {
   func set(list: [YDSpaceyCommonStruct]) {
-    spaceyViewController?.set(list: list)
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      self.spaceyViewController?.view.isHidden = true
+      self.shimmerView.isHidden = false
+      self.shimmerView.startShimmers()
+      
+      self.spaceyViewController?.set(list: list)
+      
+      let time: Double = Double(list.count)
+      Timer.scheduledTimer(
+        withTimeInterval: 0.4 * time,
+        repeats: false
+      ) { _ in
+        DispatchQueue.main.async { [weak self] in
+          guard let self = self else { return }
+          self.spaceyViewController?.view.isHidden = false
+          self.shimmerView.isHidden = true
+          self.shimmerView.stopShimmers()
+        }
+      }
+    }
   }
   
   func setSendButtonEnabled(_ enabled: Bool) {

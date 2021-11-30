@@ -193,10 +193,6 @@ class YDDialogViewController: UIViewController {
   }
 
   @objc func onLinkAction() {
-    guard let link = messageLink?["link"],
-          let url = URL(string: link)
-    else { return }
-
-    UIApplication.shared.open(url)
+    viewModel?.onLinkAction(messageLink?["link"])
   }
 }

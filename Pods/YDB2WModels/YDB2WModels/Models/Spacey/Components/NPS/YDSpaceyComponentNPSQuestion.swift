@@ -63,6 +63,8 @@ public class YDSpaceyComponentNPSQuestion: YDSpaceyComponentDelegate {
   public var isOptional: IsOptionalEnum
 
   public var storedValue: Any?
+  
+  public var itsFromPreview = false
 
   // MARK: CodingKeys
   enum CodingKeys: String, CodingKey {
@@ -74,8 +76,8 @@ public class YDSpaceyComponentNPSQuestion: YDSpaceyComponentDelegate {
     
     case maxScore
     case maxStars
-    case lowerGradeText
-    case higherGradeText
+    case lowerGradeText = "textForLowerGrade"
+    case higherGradeText = "textForHigherGrade"
     
     case question
     case title

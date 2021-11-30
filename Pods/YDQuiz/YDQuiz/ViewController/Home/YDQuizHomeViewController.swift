@@ -317,7 +317,6 @@ extension YDQuizHomeViewController {
 
     if quiz.type == .socialSecurity {
       if value.count == socialSecurityCountLimite {
-        nextButton.setEnabled(false)
         return true
       }
 

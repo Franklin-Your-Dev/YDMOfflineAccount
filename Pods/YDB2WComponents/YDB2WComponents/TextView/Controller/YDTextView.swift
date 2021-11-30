@@ -39,8 +39,8 @@ public class YDTextView: UIView {
 
       textView.delegate = self
 
-      textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-//      textView.addButtonNext(target: self, action: #selector(onNextButton))
+      textView.textContainerInset = UIEdgeInsets(top: 18, left: 12, bottom: 16, right: 12)
+      textView.textColor = YDColors.Gray.medium
     }
   }
 
@@ -125,7 +125,7 @@ extension YDTextView: UITextViewDelegate {
   }
 
   public func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.textColor == .lightGray {
+    if textView.text == placeHolder {
       textView.text = nil
       textView.textColor = defaultTextColor
     }
@@ -134,7 +134,7 @@ extension YDTextView: UITextViewDelegate {
   public func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.isEmpty {
       textView.text = placeHolder
-      textView.textColor = UIColor.lightGray
+      textView.textColor = YDColors.Gray.light
     }
   }
 }

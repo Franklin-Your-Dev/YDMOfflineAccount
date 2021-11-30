@@ -19,6 +19,7 @@ protocol NPSNavigation: AnyObject {
 
 protocol NPSViewModelDelegate: AnyObject {
   var spaceyViewModel: YDSpaceyViewModelDelegate { get set }
+  var npsComponent: Binder<YDSpaceyComponentNPS?> { get }
   var isSendButtonEnabled: Binder<Bool> { get }
   var snackBarSuccessMessage: String? { get set }
   
@@ -35,6 +36,8 @@ class NPSViewModel {
   
   let storeId: String
   let orderId: String
+  
+  var npsComponent: Binder<YDSpaceyComponentNPS?> = Binder(nil)
   
   var isSendButtonEnabled: Binder<Bool> = Binder(false)
   
@@ -53,7 +56,9 @@ class NPSViewModel {
     self.storeId = storeId
     self.orderId = orderId
     
+    configureSpaceyBinds()
     configureObserver()
+    
     trackMetric(name: .storeModeNPS, type: .state)
   }
   
@@ -66,7 +71,7 @@ class NPSViewModel {
     YDIntegrationHelper.shared
       .trackEvent(withName: name, ofType: type, withParameters: parameters)
 
-    logger.info(["Event: \(name.rawValue)", "Type: \(type.rawValue)", "Payload: \(parameters)"])
+//    logger.info(["Event: \(name.rawValue)", "Type: \(type.rawValue)", "Payload: \(parameters)"])
   }
   
   private func buildNPSMetricPayload(
@@ -88,6 +93,35 @@ class NPSViewModel {
 
     return TrackEvents.nps.parameters(body: parameters)
   }
+  
+  private func allNonOptionalAnswered() -> Bool {
+    npsComponent.value?.children.allSatisfy {
+      guard let component = $0.get() as? YDSpaceyComponentNPSQuestion else {
+        return false
+      }
+      
+      return (component.isOptional == .no && component.storedValue != nil) ||
+        component.isOptional == .yes
+    } ?? false
+  }
+}
+
+// MARK: Binds
+extension NPSViewModel {
+  func configureSpaceyBinds() {
+    spaceyViewModel.spacey.bindOnce { [weak self] spaceyOpt in
+      guard let self = self else { return }
+      guard let spacey = spaceyOpt else { return }
+      
+      spacey.allComponents().forEach {
+        guard let nps = $0.component as? YDSpaceyComponentNPS else {
+          return
+        }
+        
+        self.npsComponent.value = nps
+      }
+    }
+  }
 }
 
 // MARK: Observers
@@ -102,7 +136,7 @@ extension NPSViewModel {
   }
   
   @objc private func onNPSValueChange() {
-    isSendButtonEnabled.value = true
+    isSendButtonEnabled.value = allNonOptionalAnswered()
   }
 }
 
@@ -177,7 +211,7 @@ extension NPSViewModel: NPSViewModelDelegate {
 
     YDManager.OfflineOrders.shared.replyNPSOrder(withId: orderId)
     
-    trackMetric(name: TrackEvents.storeModeNPS, type: .action)
+    trackMetric(name: .sendNPS, type: .action)
     
     navigation.onNPSSent(snackBarMessage: snackBarSuccessMessage)
   }

@@ -19,7 +19,11 @@ class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
     width.isActive = true
     return width
   }()
-  let titleLabel = UILabel()
+  
+  let containerView = UIView()
+  
+  let titleWithOptionalView = YDSpaceyNPSTitleWithOptionalView()
+  
   let collectionView = UICollectionView(
     frame: .zero,
     collectionViewLayout: UICollectionViewLayout()
@@ -31,6 +35,7 @@ class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
   }()
 
   // MARK: Properties
+  private let padding: CGFloat = 16
   var choices: [YDSpaceyComponentNPSQuestionAnswer] = []
   var callback: ((_ choices: [YDSpaceyComponentNPSQuestionAnswer]) -> Void)?
 
@@ -63,7 +68,8 @@ class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
 
   // MARK: Configure
   func configure(with component: YDSpaceyComponentNPSQuestion) {
-    titleLabel.text = component.question
+    titleWithOptionalView.configure(with: component)
+    
     choices = component.childrenAnswers
     collectionView.reloadData()
     height.constant = 140
@@ -73,56 +79,84 @@ class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
 // MARK: Layout
 extension SpaceyMultipleChoicesListCollectionViewCell {
   func configureLayout() {
-    configureTitleLabel()
+    configureContainerView()
+    configureTitleWithOptionalView()
     configureCollectionView()
   }
-
-  func configureTitleLabel() {
-    contentView.addSubview(titleLabel)
-    titleLabel.font = .systemFont(ofSize: 14)
-    titleLabel.textColor = YDColors.black
-    titleLabel.textAlignment = .left
-
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+  
+  private func configureContainerView() {
+    contentView.addSubview(containerView)
+    containerView.backgroundColor = .white
+    containerView.layer.cornerRadius = 12
+    containerView.layer.applyShadow(y: 1, blur: 8, spread: -1)
+    
+    containerView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      titleLabel.leadingAnchor.constraint(
+      containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
+      containerView.leadingAnchor.constraint(
         equalTo: contentView.leadingAnchor,
-        constant: 16
+        constant: padding
       ),
-      titleLabel.trailingAnchor.constraint(
+      containerView.trailingAnchor.constraint(
         equalTo: contentView.trailingAnchor,
-        constant: -16
+        constant: -padding
       ),
-      titleLabel.heightAnchor.constraint(equalToConstant: 16)
+      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2)
+    ])
+  }
+  
+  private func configureTitleWithOptionalView() {
+    containerView.addSubview(titleWithOptionalView)
+    
+    NSLayoutConstraint.activate([
+      titleWithOptionalView.topAnchor.constraint(
+        equalTo: containerView.topAnchor,
+        constant: padding
+      ),
+      titleWithOptionalView.leadingAnchor.constraint(
+        equalTo: containerView.leadingAnchor,
+        constant: padding
+      ),
+      titleWithOptionalView.trailingAnchor.constraint(
+        equalTo: containerView.trailingAnchor,
+        constant: -padding
+      )
     ])
   }
 
   func configureCollectionView() {
-    contentView.addSubview(collectionView)
+    containerView.addSubview(collectionView)
     collectionView.backgroundColor = .clear
     collectionView.showsVerticalScrollIndicator = false
 
-    let layout = UICollectionViewFlowLayout()
-    layout.estimatedItemSize = CGSize(width: width.constant, height: 30)
+    let layout = SpaceyMultipleChoicesFlow()
+    layout.estimatedItemSize = CGSize(width: 50, height: 34)
     layout.minimumLineSpacing = 8
+    layout.minimumInteritemSpacing = 16
     layout.scrollDirection = .vertical
+    layout.sectionInset = UIEdgeInsets(
+      top: 0,
+      left: 16,
+      bottom: 0,
+      right: 16
+    )
     collectionView.collectionViewLayout = layout
 
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       collectionView.topAnchor.constraint(
-        equalTo: titleLabel.bottomAnchor,
-        constant: 12
+        equalTo: titleWithOptionalView.bottomAnchor,
+        constant: 14
       ),
       collectionView.leadingAnchor.constraint(
-        equalTo: contentView.leadingAnchor
+        equalTo: containerView.leadingAnchor
       ),
       collectionView.trailingAnchor.constraint(
-        equalTo: contentView.trailingAnchor
+        equalTo: containerView.trailingAnchor
       ),
       collectionView.bottomAnchor.constraint(
-        equalTo: contentView.bottomAnchor
+        equalTo: containerView.bottomAnchor,
+        constant: -12
       )
     ])
     height.constant = 130
@@ -131,10 +165,7 @@ extension SpaceyMultipleChoicesListCollectionViewCell {
     collectionView.dataSource = self
 
     // Register Cell
-    collectionView.register(
-      SpaceyMultipleChoicesCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyMultipleChoicesCollectionViewCell.identifier
-    )
+    collectionView.register(SpaceyCommonOptionCell.self)
   }
 }
 
@@ -151,12 +182,11 @@ extension SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewDataSourc
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SpaceyMultipleChoicesCollectionViewCell.identifier,
-            for: indexPath
-    ) as? SpaceyMultipleChoicesCollectionViewCell,
-    let choice = choices.at(indexPath.row)
-    else {
+    let cell: SpaceyCommonOptionCell = collectionView.dequeueReusableCell(
+      forIndexPath: indexPath
+    )
+    
+    guard let choice = choices.at(indexPath.item) else {
       fatalError()
     }
 
@@ -179,4 +209,3 @@ extension SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewDelegate 
     callback?(choices)
   }
 }
-

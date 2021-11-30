@@ -14,6 +14,7 @@ import YDUtilities
 import YDB2WModels
 import YDQuiz
 import YDMOfflineOrders
+import YDB2WCustomerIdentifier
 
 public typealias YDMOfflineAccount = YDMOfflineAccountCoordinator
 
@@ -72,7 +73,11 @@ extension YDMOfflineAccountCoordinator: PreHomeNavigationDelegate {
 }
 
 // MARK: Home
-extension YDMOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
+extension YDMStoreModeOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
+  func openCustomerIdentifier() {
+    YDCustomerIdentifier().start(user: currentUser)
+  }
+  
   func openUserData() {
     guard let viewController = UserDataViewController.initializeFromStoryboard()
     else {

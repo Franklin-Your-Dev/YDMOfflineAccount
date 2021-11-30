@@ -58,7 +58,7 @@ extension YDReplyMessageComponent {
   func configureUsernameLabel() {
     container.addSubview(usernameLabel)
 
-    usernameLabel.font = .systemFont(ofSize: 12).bold().italic()
+    usernameLabel.font = UIFont.systemFont(ofSize: 12).bold().italic()
     usernameLabel.textColor = YDColors.Gray.light
     usernameLabel.textAlignment = .left
 

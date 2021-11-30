@@ -27,9 +27,17 @@ extension YDQuizHomeViewController {
       self.stateView = .error
     }
 
-    viewModel?.socialSecurityError.bind { [weak self] _ in
-      guard let self = self else { return }
-      self.socialSecurityView.stateView = .error
+    viewModel?.socialSecurityError.bind { _ in
+      // self.socialSecurityView.stateView = .error
+      YDDialog().start(
+        ofType: .simple,
+        customTitle: "poxa, não foi possível confirmar sua identidade",
+        customMessage: "Mas, não se preocupe: pra gente te ajudar a entender o que aconteceu, mande um e-mail pra atendimento.acom@americanas.com",
+        messageLink: [
+          "message": "atendimento.acom@americanas.com",
+          "link": "mailto:atendimento.acom@americanas.com"
+        ]
+      )
     }
 
     viewModel?.quizzes.bind { [weak self] list in
