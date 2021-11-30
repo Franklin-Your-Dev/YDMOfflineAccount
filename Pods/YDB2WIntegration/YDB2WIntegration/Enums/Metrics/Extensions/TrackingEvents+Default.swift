@@ -21,15 +21,15 @@ public extension TrackEvents {
       case .liveOpenChat:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "chat"
+          "ec": "live",
+          "ea": "chat"
         ]
         
       case .addToCart:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "adicionar a cesta"
+          "ec": "live",
+          "ea": "adicionar a cesta"
         ]
         
       case .pageView, .hotsiteLive:
@@ -45,30 +45,30 @@ public extension TrackEvents {
       case .preLiveVideoPlay:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "play"
+          "ec": "live",
+          "ea": "play"
         ]
         
       case .preLiveSchedulePushNotification:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "adicionar calendario"
+          "ec": "live",
+          "ea": "adicionar calendario"
         ]
         
       case .preLiveAddToCalendar:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "adicionar calendario"
+          "ec": "live",
+          "ea": "adicionar calendario"
         ]
         
       case .preLiveOpenNextLives:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "programacao completa",
-          "eventLabel": "0"
+          "ec": "live",
+          "ea": "programacao completa",
+          "el": "0"
         ]
         
       // After Live
@@ -77,29 +77,29 @@ public extension TrackEvents {
         
       case .afterLiveAddToCalendar:
         return [
-          "category": "live",
-          "action": "adicionar calendario"
+          "ec": "live",
+          "ea": "adicionar calendario"
         ]
         
       case .afterLiveOpenNextLives:
         return [
-          "category": "live",
-          "action": "programacao completa"
+          "ec": "live",
+          "ea": "programacao completa"
         ]
         
       case .afterLiveSchedulePushNotification:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "adicionar calendario"
+          "ec": "live",
+          "ea": "adicionar calendario"
         ]
         
       // Next Lives
       case .nextLivesAddToCalendar:
         return [
           "pagetype": "Hotsite",
-          "category": "live",
-          "action": "agendamento"
+          "ec": "live",
+          "ea": "agendamento"
         ]
 
       // Store
@@ -111,33 +111,33 @@ public extension TrackEvents {
       case .storeOpenBooklet:
         return [
           "pageType": "O2O-modoloja",
-          "category": "modoloja",
-          "action": "encarte",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "encarte",
+          "el": "sucesso"
         ]
         
       case .storeOpenBasket:
         return [
           "pageType": "O2O-modoloja",
-          "category": "modoloja",
-          "action": "ver produto",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "ver produto",
+          "el": "sucesso"
         ]
         
       case .storeModeInsideLasa:
         return [
           "pageType": "O2O-modoloja",
-          "category": "modoloja",
-          "action": "localização",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "localização",
+          "el": "sucesso"
         ]
         
       case .storeOnScanInsideLasa:
         return [
           "pageType": "O2O-modoloja",
-          "category": "modoloja",
-          "action": "scan dentro da loja",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "scan dentro da loja",
+          "el": "sucesso"
         ]
 
       // Store Mode NPS

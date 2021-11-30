@@ -11,11 +11,13 @@ import Foundation
 public protocol YDDialogNavigationDelegate: AnyObject {
   func onAction()
   func onCancelAction()
+  func onLinkAction(_ link: String?)
 }
 
 protocol YDDialogViewModelDelegate: AnyObject {
   func onButtonAction()
   func onCancelAction()
+  func onLinkAction(_ link: String?)
 }
 
 // MARK: ViewModel
@@ -36,5 +38,9 @@ extension YDDialogViewModel: YDDialogViewModelDelegate {
 
   func onCancelAction() {
     navigation.onCancelAction()
+  }
+  
+  func onLinkAction(_ link: String?) {
+    navigation.onLinkAction(link)
   }
 }

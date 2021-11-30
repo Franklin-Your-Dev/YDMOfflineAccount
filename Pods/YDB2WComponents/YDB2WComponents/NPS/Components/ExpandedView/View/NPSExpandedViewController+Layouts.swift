@@ -51,6 +51,7 @@ extension YDNPSExpandedViewController {
     let vc = YDSpaceyViewController()
     vc.viewModel = viewModel
     vc.hasShimmer = false
+    vc.delegate = self
     vc.view.isHidden = true
     
     vc.willMove(toParent: self)
@@ -59,7 +60,6 @@ extension YDNPSExpandedViewController {
     vc.didMove(toParent: self)
     
     spaceyViewController = vc
-    spaceyViewController?.delegate = self
 
     vc.view.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -68,7 +68,7 @@ extension YDNPSExpandedViewController {
       vc.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       vc.view.bottomAnchor.constraint(
         equalTo: sendButton.topAnchor,
-        constant: -6
+        constant: -8
       )
     ])
   }
@@ -82,7 +82,7 @@ extension YDNPSExpandedViewController {
 
     bottomShadowView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      bottomShadowView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: -6),
+      bottomShadowView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: -8),
       bottomShadowView.heightAnchor.constraint(equalToConstant: 1),
       bottomShadowView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       bottomShadowView.trailingAnchor.constraint(equalTo: view.trailingAnchor)

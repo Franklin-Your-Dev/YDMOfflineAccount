@@ -9,29 +9,29 @@ import UIKit
 import YDB2WColors
 
 public extension UIView {
-
+  
   class var identifier: String {
     return String(describing: self)
   }
-
+  
   func loadNib() -> UIView {
     let bundle = Bundle.init(for: type(of: self))
     let nibName = Self.description().components(separatedBy: ".").last!
     let nib = UINib(nibName: nibName, bundle: bundle)
     return nib.instantiate(withOwner: self, options: nil).first as! UIView
   }
-
+  
   class func loadFromNibNamed(
     _ nibNamed: String,
     _ bundle: Bundle? = Bundle.main
   ) -> UINib {
     return UINib(nibName: nibNamed, bundle: bundle)
   }
-
+  
   class func loadNib(_ bundle: Bundle? = Bundle.main) -> UINib {
     return loadFromNibNamed(self.identifier, bundle)
   }
-
+  
   class func loadFromNib(bundle: Bundle? = Bundle.main) -> UIView? {
     return loadFromNibNamed(self.identifier, bundle).instantiate(
       withOwner: nil,
@@ -41,25 +41,25 @@ public extension UIView {
 }
 
 public extension UIView {
-
+  
   // MARK: Loading
   func startLoader(message: String? = nil) {
     let viewLoading = UIView(frame: self.frame)
     viewLoading.tag = 99999
     viewLoading.backgroundColor = .white
     viewLoading.center = self.center
-
+    
     // Activity Indicator
     let loader = UIActivityIndicatorView(style: .whiteLarge)
     loader.startAnimating()
     loader.center = viewLoading.center
     loader.color = YDColors.branding
     viewLoading.addSubview(loader)
-
+    
     self.addSubview(viewLoading)
     self.bringSubviewToFront(viewLoading)
   }
-
+  
   func stopLoader() {
     self.subviews.forEach { view in
       if view.tag == 99999 {
@@ -67,7 +67,7 @@ public extension UIView {
       }
     }
   }
-
+  
   // MARK: Corner round
   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
     let path = UIBezierPath(
@@ -99,7 +99,7 @@ public extension UIView {
     leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading).isActive = true
     trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing).isActive = true
   }
-
+  
   func bindFrameToSuperview(
     top: CGFloat = 0,
     bottom: CGFloat = 0,
@@ -116,6 +116,18 @@ public extension UIView {
     bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: bottom).isActive = true
     leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: leading).isActive = true
     trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: trailing).isActive = true
+  }
+  
+  func aspectRation(_ ratio: CGFloat) -> NSLayoutConstraint {
+    return NSLayoutConstraint(
+      item: self,
+      attribute: .height,
+      relatedBy: .equal,
+      toItem: self,
+      attribute: .width,
+      multiplier: ratio,
+      constant: 0
+    )
   }
 }
 
@@ -134,19 +146,19 @@ public extension UIView {
     gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor, colorOne.cgColor]
     gradientLayer.locations = [0.0, 0.5, 1.0]
     gradientLayer.name = "shimmerAnimation"
-
+    
     let animation = CABasicAnimation(keyPath: "locations")
     animation.fromValue = [-1.0, -0.5, 0.0]
     animation.toValue = [1.0, 1.5, 2.0]
     animation.repeatCount = .infinity
     animation.duration = speed
     animation.beginTime = CFTimeInterval() + delay
-
+    
     gradientLayer.add(animation, forKey: "shimmerAnimation")
     layer.addSublayer(gradientLayer)
     layer.masksToBounds = true
   }
-
+  
   func stopShimmer() {
     layer.removeAnimation(forKey: "shimmerAnimation")
     layer.sublayers?.first(where: { $0.name == "shimmerAnimation" })?.removeFromSuperlayer()

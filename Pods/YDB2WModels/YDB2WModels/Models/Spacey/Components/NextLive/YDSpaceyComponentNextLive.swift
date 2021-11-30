@@ -15,6 +15,7 @@ public class YDSpaceyComponentNextLive: Decodable {
   public let finalDate: String?
   public let name: String?
   public let description: String?
+  public var liveType: LiveTypeEnum = .horizontal
   public var alreadyScheduled = false
   public let componentType: YDSpaceyComponentsTypes.Types = .nextLive
 
@@ -29,12 +30,12 @@ public class YDSpaceyComponentNextLive: Decodable {
 
   public var formatedDate: String? {
     guard let initialDateFormat = initialDate?.date(withFormat: "dd/MM/yyyy HH:mm"),
-          let finalDateFormat = finalDate?.date(withFormat: "dd/MM/yyyy HH:mm")
+          let finalDateFormat = finalDate?.date(withFormat: "dd/MM/yyyy HH:mm"),
+          let now = Date().convertToSaoPauloTimeZone()
     else { return nil }
 
     let startTime = initialDateFormat.toFormat("HH:mm")
     let endTime = finalDateFormat.toFormat("HH:mm")
-    let now = Date()
 
     if initialDateFormat.isInToday &&
         now.isBetween(initialDateFormat, and: finalDateFormat) {
@@ -46,19 +47,19 @@ public class YDSpaceyComponentNextLive: Decodable {
 
   public var isAvailable: Bool {
     guard let initialDateFormat = initialDate?.date(withFormat: "dd/MM/yyyy HH:mm"),
-          let finalDateFormat = finalDate?.date(withFormat: "dd/MM/yyyy HH:mm")
+          let finalDateFormat = finalDate?.date(withFormat: "dd/MM/yyyy HH:mm"),
+          let now = Date().convertToSaoPauloTimeZone()
     else { return false }
 
-    let now = Date()
     return !now.isBetween(initialDateFormat, and: finalDateFormat) && !alreadyScheduled
   }
 
   public var isLive: Bool {
     guard let initialDateFormat = initialDate?.date(withFormat: "dd/MM/yyyy HH:mm"),
-          let finalDateFormat = finalDate?.date(withFormat: "dd/MM/yyyy HH:mm")
+          let finalDateFormat = finalDate?.date(withFormat: "dd/MM/yyyy HH:mm"),
+          let now = Date().convertToSaoPauloTimeZone()
     else { return false }
 
-    let now = Date()
     return now.isBetween(initialDateFormat, and: finalDateFormat)
   }
 
@@ -70,6 +71,7 @@ public class YDSpaceyComponentNextLive: Decodable {
     case finalDate = "liveEndTime"
     case name = "liveTitle"
     case description = "liveDescription"
+    case liveType = "liveVertical"
   }
 
   // MARK: Init
@@ -79,7 +81,8 @@ public class YDSpaceyComponentNextLive: Decodable {
     initialDate: String? = nil,
     finalDate: String? = nil,
     name: String? = nil,
-    description: String? = nil
+    description: String? = nil,
+    liveType: LiveTypeEnum = .horizontal
   ) {
     self.liveId = liveId
     self.photo = photo
@@ -87,7 +90,32 @@ public class YDSpaceyComponentNextLive: Decodable {
     self.finalDate = finalDate
     self.name = name
     self.description = description
+    self.liveType = liveType
   }
+  
+  public required init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    
+    liveId = try container.decodeIfPresent(String.self, forKey: .liveId)
+    photo = try container.decodeIfPresent(String.self, forKey: .photo)
+    initialDate = try container.decodeIfPresent(String.self, forKey: .initialDate)
+    finalDate = try container.decodeIfPresent(String.self, forKey: .finalDate)
+    name = try container.decodeIfPresent(String.self, forKey: .name)
+    description = try container.decodeIfPresent(String.self, forKey: .description)
+    
+    if let liveTypeString = try? container.decode(String.self, forKey: .liveType),
+       let liveType = LiveTypeEnum(rawValue: liveTypeString) {
+      self.liveType = liveType
+    } else {
+      self.liveType = .horizontal
+    }
+  }
+}
+
+// MARK: Private enum
+public enum LiveTypeEnum: String, Decodable {
+  case vertical = "sim"
+  case horizontal = "não"
 }
 
 // MARK: Sort array of NextLives

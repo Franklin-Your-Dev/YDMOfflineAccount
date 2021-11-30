@@ -64,6 +64,10 @@ public class YDAssets {
       UIImage(named: "chevron-down", in: podsBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }()
     
+    public static let chevronLeft: UIImage? = {
+      UIImage(named: "iconChevronLeft", in: podsBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+    }()
+    
     public static let chevronRight: UIImage? = {
       UIImage(named: "iconChevronRight", in: podsBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }()
@@ -106,6 +110,10 @@ public class YDAssets {
         in: podsBundle,
         compatibleWith: nil
       )?.withRenderingMode(.alwaysTemplate)
+    }()
+    
+    public static let eye: UIImage? = {
+      UIImage(named: "iconEye", in: podsBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }()
     
     public static let gps: UIImage? = {
@@ -291,12 +299,24 @@ public class YDAssets {
       UIImage(named: "logoWithLive", in: podsBundle, compatibleWith: nil)
     }()
     
+    public static var logoSmall: UIImage? = {
+      UIImage(
+        named: getBrandFileName("logoSmall"),
+        in: podsBundle,
+        compatibleWith: nil
+      )
+    }()
+    
     public static let map: UIImage? = {
       UIImage(named: "map", in: podsBundle, compatibleWith: nil)
     }()
     
     public static let qrCode: UIImage? = {
       UIImage(named: "qrCode", in: podsBundle, compatibleWith: nil)
+    }()
+    
+    public static let qrCodeCard: UIImage? = {
+      UIImage(named: "qrCodeCard", in: podsBundle, compatibleWith: nil)
     }()
     
     public static let store: UIImage? = {

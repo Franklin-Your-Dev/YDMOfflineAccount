@@ -21,6 +21,7 @@ target 'YDMOfflineAccount' do
   pod "YDB2WServices", "~> 1.6.0"
   pod "YDQuiz", "~> 1.6.0"
   pod "YDB2WColors", "~> 1.6.0"
+  pod "YDB2WCustomerIdentifier", "~> 1.6.0"
   
   pod "Hero"
 

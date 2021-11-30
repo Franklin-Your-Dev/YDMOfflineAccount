@@ -40,7 +40,7 @@ public extension TrackEvents {
           "productId": productId,
           "sku": sku,
           "sellerId": sellerId,
-          "eventLabel": liveName
+          "el": liveName
         ]
 
       case .productSelected:
@@ -59,7 +59,7 @@ public extension TrackEvents {
 
       case .liveOpenChat:
         return [
-          "eventLabel": body["liveName"] as? String ?? ""
+          "el": body["liveName"] as? String ?? ""
         ]
         
       case .liveNPS:
@@ -85,14 +85,14 @@ public extension TrackEvents {
         return [:]
         
       case .preLiveVideoPlay, .preLiveSchedulePushNotification, .preLiveAddToCalendar:
-        return ["eventLabel": body["liveName"] as? String ?? ""]
+        return ["el": body["liveName"] as? String ?? ""]
         
       // After Live
       case .afterLive:
         return [:]
         
       case .afterLiveAddToCalendar, .afterLiveSchedulePushNotification, .afterLiveOpenNextLives:
-        return ["eventLabel": body["liveName"] as? String ?? ""]
+        return ["el": body["liveName"] as? String ?? ""]
 
       // Next Lives
       case .nextLivesPageView:
@@ -102,9 +102,9 @@ public extension TrackEvents {
         let liveName = body["liveName"] as? String ?? ""
 
         return [
-          "category": "live",
-          "action": "agendamento",
-          "eventLabel": liveName
+          "ec": "live",
+          "ea": "agendamento",
+          "el": liveName
         ]
 
       // Store
@@ -125,26 +125,26 @@ public extension TrackEvents {
         let starType = body["starType"] as? Bool ?? false
 
         var parameters: [String: Any] = [
-          "category": "modoloja",
-          "action": question
+          "ec": "modoloja",
+          "ea": question
         ]
 
         if starType {
           parameters["nota"] = value
         } else {
-          parameters["label"] = value
+          parameters["el"] = value
         }
 
         return parameters
 
       // Find a Store
       case .findStore:
-        let action = body["action"] as? String ?? ""
+        let action = body["ea"] as? String ?? ""
 
         return [
-          "category": "modoloja",
-          "action": action,
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": action,
+          "el": "sucesso"
         ]
         
       case .findStoreViewDenied:
@@ -160,18 +160,18 @@ public extension TrackEvents {
         
       case .offlineAccountHistoric:
         return [
-          "category": "modoloja",
-          "action": "exportar relatórios",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "exportar relatórios",
+          "el": "sucesso"
         ]
         
       case .offlineAccountPerfil:
-        let action = body["action"] as? String ?? ""
+        let action = body["ea"] as? String ?? ""
 
         return [
-          "category": "modoloja",
-          "action": action,
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": action,
+          "el": "sucesso"
         ]
 
       // Offline Orders
@@ -180,72 +180,72 @@ public extension TrackEvents {
         
       case .offlineOrdersSuccess:
         return [
-          "category": "modoloja",
-          "action": "detalhes da compra",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "detalhes da compra",
+          "el": "sucesso"
         ]
         
       case .offlineOrdersOrderDetails:
-        let action = body["action"] as? String ?? ""
+        let action = body["ea"] as? String ?? ""
         
         return [
-          "category": "modoloja",
-          "action": action,
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": action,
+          "el": "sucesso"
         ]
         
       case .offlineOrdersNPS:
         return [
-          "category": "modoloja",
-          "action": "nps detalhes da compra",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "nps detalhes da compra",
+          "el": "sucesso"
         ]
         
         
       case .offlineOrdersProductDetails:
-        let action = body["action"] as? String ?? ""
+        let action = body["ea"] as? String ?? ""
         
         return [
-          "category": "modoloja",
-          "action": action,
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": action,
+          "el": "sucesso"
         ]
       
       // Tax Coupon
       case .taxCoupon:
         return [
-          "category": "modoloja",
-          "action": "compartilhar cupom fiscal",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "compartilhar cupom fiscal",
+          "el": "sucesso"
         ]
         
       // Quiz
       case .quizSocialSecurity:
         return [
-          "category": "modoloja",
-          "action": "digitou CPF no quiz",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "digitou CPF no quiz",
+          "el": "sucesso"
         ]
         
       case .quizQuizzesFinished:
         return [
-          "category": "modoloja",
-          "action": "e-mail salvo no Quiz",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "e-mail salvo no Quiz",
+          "el": "sucesso"
         ]
         
       case .quizIncompleteRegistration:
         return [
-          "category": "modoloja",
-          "action": "cadastro incompleto",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "cadastro incompleto",
+          "el": "sucesso"
         ]
         
       case .quizRegistrationNotFound:
         return [
-          "category": "modoloja",
-          "action": "cadastro sem dados",
-          "label": "sucesso"
+          "ec": "modoloja",
+          "ea": "cadastro sem dados",
+          "el": "sucesso"
         ]
         
       // Miscellaneous

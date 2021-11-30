@@ -18,36 +18,45 @@ PODS:
   - libwebp/mux (1.2.1):
     - libwebp/demux
   - libwebp/webp (1.2.1)
-  - YDB2WAssets (1.6.0):
+  - Starscream (3.0.6)
+  - YDB2WAssets (1.6.4):
     - YDB2WBrandManager (~> 1.6.0)
     - YDB2WModels (~> 1.6.0)
   - YDB2WBrandManager (1.6.0)
   - YDB2WColors (1.6.4)
-  - YDB2WComponents (1.6.0):
+  - YDB2WComponents (1.6.22):
     - Cosmos
     - YDB2WAssets (~> 1.6.0)
     - YDB2WColors (~> 1.6.0)
+    - YDB2WDeepLinks (~> 1.6.0)
     - YDB2WModels (~> 1.6.0)
     - YDB2WServices (~> 1.6.0)
+    - YDExtensions (~> 1.6.0)
+    - YDUtilities (~> 1.6.0)
+    - YDWebSocket (~> 1.6.0)
+  - YDB2WCustomerIdentifier (1.6.1):
+    - YDB2WAssets (~> 1.6.0)
+    - YDB2WColors (~> 1.6.0)
+    - YDB2WModels (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
   - YDB2WDeepLinks (1.6.0):
     - YDB2WIntegration (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
-  - YDB2WIntegration (1.6.0):
+  - YDB2WIntegration (1.6.5):
     - YDB2WModels (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
-  - YDB2WModels (1.6.0):
+  - YDB2WModels (1.6.7):
     - YDB2WColors (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
-  - YDB2WServices (1.6.0):
+  - YDB2WServices (1.6.1):
     - Alamofire (= 5.4.4)
     - YDB2WBrandManager (~> 1.6.0)
     - YDB2WIntegration (~> 1.6.0)
     - YDB2WModels (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
-  - YDExtensions (1.6.2):
+  - YDExtensions (1.6.6):
     - Kingfisher (~> 5.0)
     - KingfisherWebP (= 1.0.0)
     - YDB2WColors (~> 1.6.0)
@@ -63,7 +72,7 @@ PODS:
     - YDExtensions (~> 1.6.0)
     - YDLocationModule (~> 1.0.5)
     - YDUtilities (~> 1.6.0)
-  - YDMOfflineOrders (1.6.0):
+  - YDMOfflineOrders (1.6.6):
     - Cosmos
     - YDB2WAssets (~> 1.6.0)
     - YDB2WColors (~> 1.6.0)
@@ -76,7 +85,7 @@ PODS:
     - YDMFindStore (~> 1.6.0)
     - YDQuiz (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
-  - YDQuiz (1.6.0):
+  - YDQuiz (1.6.4):
     - YDB2WAssets (~> 1.6.0)
     - YDB2WColors (~> 1.6.0)
     - YDB2WComponents (~> 1.6.0)
@@ -85,15 +94,21 @@ PODS:
     - YDB2WServices (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
-  - YDUtilities (1.6.0):
+  - YDUtilities (1.6.2):
     - Alamofire (= 5.4.4)
+    - YDB2WModels (~> 1.6.0)
+    - YDExtensions (~> 1.6.0)
+  - YDWebSocket (1.6.0):
+    - Starscream (= 3.0.6)
     - YDB2WModels (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
 
 DEPENDENCIES:
   - Hero
   - YDB2WAssets (~> 1.6.0)
+  - YDB2WColors (~> 1.6.0)
   - YDB2WComponents (~> 1.6.0)
+  - YDB2WCustomerIdentifier (~> 1.6.0)
   - YDB2WIntegration (~> 1.6.0)
   - YDB2WServices (~> 1.6.0)
   - YDExtensions (~> 1.6.0)
@@ -107,6 +122,7 @@ SPEC REPOS:
     - YDB2WBrandManager
     - YDB2WColors
     - YDB2WComponents
+    - YDB2WCustomerIdentifier
     - YDB2WDeepLinks
     - YDB2WIntegration
     - YDB2WModels
@@ -117,6 +133,7 @@ SPEC REPOS:
     - YDMOfflineOrders
     - YDQuiz
     - YDUtilities
+    - YDWebSocket
   trunk:
     - Alamofire
     - Cosmos
@@ -125,6 +142,7 @@ SPEC REPOS:
     - Kingfisher
     - KingfisherWebP
     - libwebp
+    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
@@ -134,21 +152,24 @@ SPEC CHECKSUMS:
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   KingfisherWebP: b1ed1dbc5e52547c5bf5f583dd5c46346f97320f
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
-  YDB2WAssets: ffb336ac52f28ab60747208f3f1394a18f30f610
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  YDB2WAssets: 0cb1af8508d0d45a7cddacfe831944f21c7685d0
   YDB2WBrandManager: 003f5bdc114d4dfc8e5f2332f780c91336e1ce97
   YDB2WColors: d65cd1d7b675b18392c1b610315936be8ed00e70
-  YDB2WComponents: 0c81e9664d5bbd66c7b6e350d2ebd9d0908b1269
+  YDB2WComponents: b06369d1684f42dcc36edf0c847a3ee15779208e
+  YDB2WCustomerIdentifier: 0ad94f6513b1e06aa143f1c77599cb2157dfe86f
   YDB2WDeepLinks: cdd94881b9e887e8684d30648e19899df9ed67b7
-  YDB2WIntegration: 88640a141a82dddba996ebecf70ab26436a20721
-  YDB2WModels: e64730882530dec33caf0cae91e66b71c7875052
-  YDB2WServices: 56bb2237f8fd3c56ac8d0cf9bccd90584312f153
-  YDExtensions: 8cffc2c846a7842c25d291c4792353d32e29e11b
+  YDB2WIntegration: eeaf2200f6ea3225a38ea7ef3828f91da4f2ea7c
+  YDB2WModels: f302326fa3a65ad3e6a74b3446cc63a746350d95
+  YDB2WServices: a03d2836b14eec56867282bf90754ebe4b8bce86
+  YDExtensions: afa8516b61c97a2189c7cbb62726467ece7858fb
   YDLocationModule: 35cddec317442e18078cb64e1542d7cd360ccb43
   YDMFindStore: f942907a13bc5b08fe134df07ea2f8e1c15ce8cd
-  YDMOfflineOrders: 16f0d38ccf92dbc58bc7a5b4ca12a70b5da4a8e7
-  YDQuiz: 189ac15645b4b6b9b630b85b8d5cb8d4d45127a9
-  YDUtilities: 0e809d5dc35ee95559b99e4eeb7a8765e7151e5a
+  YDMOfflineOrders: ef6ce492bc734d135fec9f44440d66c4b552c6c7
+  YDQuiz: 8ea4a2a1e9092ac5cc9ee7e065382c089fad9d4f
+  YDUtilities: 92fff2335a86b98bd66e766d9a41e6d78fe1c626
+  YDWebSocket: 5adddea4995b4b3cd285cf0ad2c5695e0db35020
 
-PODFILE CHECKSUM: 886c9bf63e8a36ed55bbfc74e6940bf79e212658
+PODFILE CHECKSUM: 6a88a4b672e71ed7d2fb6972d0590bb10a327db7
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.2

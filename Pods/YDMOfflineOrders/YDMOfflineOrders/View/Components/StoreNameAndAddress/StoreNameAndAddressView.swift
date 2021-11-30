@@ -15,7 +15,7 @@ class StoreNameAndAddressView: UIView {
   // MARK: Properties
   lazy var shimmers: [UIView] = {
     [
-      logoContainer,
+      logoImageView,
       storeNameLabel,
       addressLabel,
       adressLabelShimmer
@@ -23,7 +23,6 @@ class StoreNameAndAddressView: UIView {
   }()
   
   // MARK: Components
-  let logoContainer = UIView()
   let logoImageView = UIImageView()
   let storeNameLabel = UILabel()
   let addressLabel = UILabel()
@@ -83,30 +82,18 @@ extension StoreNameAndAddressView {
   }
   
   private func configureLogoImageView() {
-    addSubview(logoContainer)
-    logoContainer.backgroundColor = YDColors.branding
-    logoContainer.layer.cornerRadius = 8
-    logoContainer.clipsToBounds = true
-    
-    logoContainer.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      logoContainer.widthAnchor.constraint(equalToConstant: 55),
-      logoContainer.heightAnchor.constraint(equalToConstant: 55),
-      logoContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-      logoContainer.centerYAnchor.constraint(equalTo: centerYAnchor)
-    ])
-    
-    // Logo
-    logoContainer.addSubview(logoImageView)
-    logoImageView.tintColor = YDColors.white
-    logoImageView.image = YDAssets.Icons.logo
+    addSubview(logoImageView)
+    logoImageView.backgroundColor = YDColors.branding
+    logoImageView.layer.cornerRadius = 8
+    logoImageView.image = YDAssets.Images.logoSmall
+    logoImageView.layer.applyShadow()
     
     logoImageView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      logoImageView.centerXAnchor.constraint(equalTo: logoContainer.centerXAnchor),
-      logoImageView.centerYAnchor.constraint(equalTo: logoContainer.centerYAnchor),
-      logoImageView.heightAnchor.constraint(equalToConstant: 11),
-      logoImageView.widthAnchor.constraint(equalToConstant: 48)
+      logoImageView.widthAnchor.constraint(equalToConstant: 55),
+      logoImageView.heightAnchor.constraint(equalToConstant: 55),
+      logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      logoImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
     ])
   }
   
@@ -122,7 +109,7 @@ extension StoreNameAndAddressView {
     NSLayoutConstraint.activate([
       storeNameLabel.topAnchor.constraint(equalTo: topAnchor),
       storeNameLabel.leadingAnchor.constraint(
-        equalTo: logoContainer.trailingAnchor,
+        equalTo: logoImageView.trailingAnchor,
         constant: 16
       ),
       storeNameLabel.trailingAnchor.constraint(

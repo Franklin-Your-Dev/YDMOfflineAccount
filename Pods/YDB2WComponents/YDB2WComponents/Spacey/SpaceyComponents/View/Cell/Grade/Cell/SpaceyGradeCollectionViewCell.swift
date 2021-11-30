@@ -9,6 +9,7 @@ import UIKit
 
 import YDExtensions
 import YDB2WModels
+import YDB2WColors
 
 class SpaceyGradeCollectionViewCell: UICollectionViewCell {
   // MARK: Components
@@ -16,31 +17,11 @@ class SpaceyGradeCollectionViewCell: UICollectionViewCell {
   let gradeLabel = UILabel()
 
   // MARK: Properties
-  private let selectedBackgroundColor = UIColor(
-    red: 102 / 255,
-    green: 102 / 255,
-    blue: 102 / 255,
-    alpha: 1
-  )
-  private let selectedLabelColor = UIColor(
-    red: 255 / 255,
-    green: 255 / 255,
-    blue: 255 / 255,
-    alpha: 1
-  )
+  private let selectedBackgroundColor = YDColors.branding
+  private let selectedLabelColor = YDColors.white
 
-  private let unselectedBackgroundColor = UIColor(
-    red: 235 / 255,
-    green: 235 / 255,
-    blue: 235 / 255,
-    alpha: 1
-  )
-  private let unselectedLabelColor = UIColor(
-    red: 112 / 255,
-    green: 112 / 255,
-    blue: 112 / 255,
-    alpha: 1
-  )
+  private let unselectedBackgroundColor = YDColors.Gray.opaque
+  private let unselectedLabelColor = YDColors.Gray.medium
 
   // MARK: Init
   override init(frame: CGRect) {
@@ -78,7 +59,7 @@ extension SpaceyGradeCollectionViewCell {
   func configureContainer() {
     contentView.addSubview(container)
     container.backgroundColor = unselectedBackgroundColor
-    container.layer.cornerRadius = 8
+    container.layer.cornerRadius = 4
 
     container.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -91,7 +72,7 @@ extension SpaceyGradeCollectionViewCell {
 
   func configuregradeLabel() {
     container.addSubview(gradeLabel)
-    gradeLabel.font = .systemFont(ofSize: 14)
+    gradeLabel.font = .boldSystemFont(ofSize: 16)
     gradeLabel.textColor = unselectedLabelColor
     gradeLabel.textAlignment = .center
 

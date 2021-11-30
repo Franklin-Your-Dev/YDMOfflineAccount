@@ -53,7 +53,8 @@ public class YDStore: Decodable {
     calendar.locale = Locale(identifier: "en-US") // Need to be English since we compare with english day week name
 
     let weekDays = calendar.weekdaySymbols
-    guard let todayWeekDay = weekDays.at(calendar.component(.weekday, from: Date()) - 1),
+    guard let now = Date().convertToSaoPauloTimeZone(),
+          let todayWeekDay = weekDays.at(calendar.component(.weekday, from: now) - 1),
           let todayStruct = schedules[todayWeekDay]
     else {
       return ""

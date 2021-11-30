@@ -38,6 +38,7 @@ public class YDDialogCoordinator {
   public var payload: [String: Any]?
   
   public var callback: ((_ fromAction: Bool, _ payload: [String: Any]?) -> Void)?
+  public var onLinkCallback: ((_ link: String?) -> Void)?
 
   // MARK: Init
   public init() {}
@@ -104,5 +105,9 @@ extension YDDialogCoordinator: YDDialogNavigationDelegate {
       
       self.delegate?.onCancelYDDialog(payload: self.payload)
     }
+  }
+  
+  public func onLinkAction(_ link: String?) {
+    onLinkCallback?(link)
   }
 }

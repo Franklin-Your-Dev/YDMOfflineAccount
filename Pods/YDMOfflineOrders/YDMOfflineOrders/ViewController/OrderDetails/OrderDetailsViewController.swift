@@ -111,19 +111,7 @@ class OrderDetailsViewController: UIViewController {
   }
   
   @objc func onDescriptionAction() {
-    let title = "o que é cada um desses documentos?"
-    let message = """
-    Cupom fiscal: é um comprovante de venda e pode ser utilizado para realizar trocas dentro das lojas, ele é auxiliar da nota fiscal.
-
-    Nota fiscal: é um documento oficial que pode ser utilizado para trocas com o fornecedor, fazer seguros e usar para assistência técnica.
-    """
-    
-    YDDialog().start(
-      ofType: .simple,
-      customTitle: title,
-      customMessage: message,
-      messagesToBold: ["Cupom fiscal:", "Nota fiscal:"]
-    )
+    viewModel?.openDescriptionDialog()
   }
 
   func toggleNavShadow(_ show: Bool) {
