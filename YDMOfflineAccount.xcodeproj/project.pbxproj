@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920E237127563BCE003C73DB /* ItensOffinlineAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */; };
 		92427B9127308266007358A4 /* YDMOfflineAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 92427B8F27308266007358A4 /* YDMOfflineAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92427B98273082DC007358A4 /* YDMOfflineAccount.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 92427B97273082DC007358A4 /* YDMOfflineAccount.podspec */; };
 		92427BED273082E9007358A4 /* YDErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427B9B273082E8007358A4 /* YDErrorView.swift */; };
@@ -59,6 +60,7 @@
 		01CA1AB3BDF0E2149CF5A127 /* Pods-YDMOfflineAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDMOfflineAccount.release.xcconfig"; path = "Target Support Files/Pods-YDMOfflineAccount/Pods-YDMOfflineAccount.release.xcconfig"; sourceTree = "<group>"; };
 		01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDMOfflineAccount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5719294B3B64F5D6E4537C /* Pods-YDMOfflineAccount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDMOfflineAccount.debug.xcconfig"; path = "Target Support Files/Pods-YDMOfflineAccount/Pods-YDMOfflineAccount.debug.xcconfig"; sourceTree = "<group>"; };
+		920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItensOffinlineAccount.swift; sourceTree = "<group>"; };
 		92427B8C27308266007358A4 /* YDMOfflineAccount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YDMOfflineAccount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92427B8F27308266007358A4 /* YDMOfflineAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDMOfflineAccount.h; sourceTree = "<group>"; };
 		92427B9027308266007358A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 				01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		920E236F27563BC2003C73DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		92427B8227308266007358A4 = {
@@ -552,6 +562,7 @@
 		9294A39D27513E9E002991AC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				920E236F27563BC2003C73DB /* Model */,
 				92427BA0273082E9007358A4 /* View */,
 				92427BB5273082E9007358A4 /* ViewController */,
 				9294A39E27513EB5002991AC /* ViewModel */,
@@ -691,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920E237127563BCE003C73DB /* ItensOffinlineAccount.swift in Sources */,
 				92427BFB273082E9007358A4 /* HomeViewController.swift in Sources */,
 				92427BFC273082E9007358A4 /* HomeViewController+ScrollView.swift in Sources */,
 				92427C0A273082E9007358A4 /* UserDataTermsAndButtonTableViewCell.swift in Sources */,

@@ -4,19 +4,19 @@
 source 'https://cdn.cocoapods.org/'
 source 'git@github.com:Hennrich-Your-Dev/YourDev-Pods.git'
 
-pod 'YDMOfflineAccount', :path => '../'
-
 target 'Example' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for Example
 
+  pod 'YDMOfflineAccount', :path => '../'
+  
   target 'ExampleTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
   target 'ExampleUITests' do
     # Pods for testing
   end

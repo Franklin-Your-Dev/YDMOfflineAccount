@@ -12,40 +12,11 @@ import YDExtensions
 import YDB2WComponents
 import YDB2WColors
 
-enum ItensOffilineAccountEnum {
-  case store
-  case clipboard
-  case customerIdentifier
-}
-
-class ItensOffinlineAccount {
-  let icon: UIImage
-  let title: String
-  let type: ItensOffilineAccountEnum
-  let new : Bool
-  
-  init(icon: UIImage, title: String, type: ItensOffilineAccountEnum, new: Bool) {
-    self.icon = icon
-    self.title = title
-    self.type = type
-    self.new = new
-  }
-}
-
-
 class HomeViewController: UIViewController {
-  // MARK: Properties
+  // MARK: Variables
+  
   var viewModel: HomeViewModelDelegate?
   var navBarShadowOff = true
-  
-  @IBOutlet weak var shadowView: UIView! {
-    didSet {
-      shadowView.backgroundColor = .white
-      shadowView.layer.zPosition = 5
-    }
-  }
-  
-  var collectionView: UICollectionView?
   
   var listItensOffiline = [
     ItensOffinlineAccount(
@@ -61,6 +32,16 @@ class HomeViewController: UIViewController {
       new: false
     )
   ]
+  
+  // MARK: Views
+  @IBOutlet weak var shadowView: UIView! {
+    didSet {
+      shadowView.backgroundColor = .white
+      shadowView.layer.zPosition = 5
+    }
+  }
+  
+  var collectionView: UICollectionView?
   
   // MARK: Life cycle
   override func viewDidLoad() {
@@ -100,7 +81,7 @@ extension HomeViewController {
   
   func buildList() {
     
-    if true {
+    if viewModel?.customerIdentifierEnabled ?? false {
       let customerIdentifier = ItensOffinlineAccount(
         icon: YDAssets.Images.qrCodeCard!,
         title: "identifique-se aqui e facilite suas compras nas lojas físicas :)",

@@ -26,7 +26,7 @@ protocol HomeViewModelNavigationDelegate {
 protocol HomeViewModelDelegate {
   var currentUser: YDCurrentCustomer { get }
   var error: Binder<(title: String, message: String)> { get }
-
+  var customerIdentifierEnabled: Bool { get set }
   func onExit()
   func trackState()
   func onCard(tag: ItensOffilineAccountEnum)
@@ -38,7 +38,8 @@ class HomeViewModel {
   let navigation: HomeViewModelNavigationDelegate
   var currentUser: YDCurrentCustomer
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
-
+  var customerIdentifierEnabled = true
+  
   var userClientLasaToken: String = ""
 
   // MARK: Init
@@ -115,13 +116,6 @@ extension HomeViewModel: HomeViewModelDelegate {
           )
         
         navigation.openOfflineOrders()
-
-      default:
-        //        error.value = (
-        //          "poooxa, ainda não temos seu cadastro completo",
-        //          "E pra mantermos a segurança dos seus dados, você poderá consultar mais informações com nosso atendimento, através do e-mail: atendimento.acom@americanas.com"
-        //        )
-        break
     }
   }
 }

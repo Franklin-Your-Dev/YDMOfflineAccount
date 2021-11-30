@@ -76,7 +76,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
       for: indexPath
     ) as! HomeHeaderViewCell
     
-    header.initView(user: viewModel!.currentUser)
+    header.populateView(user: viewModel!.currentUser)
     
     return header
     
