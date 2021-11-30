@@ -20,7 +20,6 @@ class HomeViewCell: UICollectionViewCell {
   // MARK: Life cycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-    initView()
     setupCard()
     setupImage()
     setupTitle()
@@ -41,8 +40,6 @@ class HomeViewCell: UICollectionViewCell {
 }
 
 extension HomeViewCell {
-  
-  func initView() { }
   
   func setupCard() {
     self.addSubview(card)
