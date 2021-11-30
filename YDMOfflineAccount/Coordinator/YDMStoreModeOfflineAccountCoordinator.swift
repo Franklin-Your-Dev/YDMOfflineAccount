@@ -73,7 +73,7 @@ extension YDMOfflineAccountCoordinator: PreHomeNavigationDelegate {
 }
 
 // MARK: Home
-extension YDMStoreModeOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
+extension YDMOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
   func openCustomerIdentifier() {
     YDCustomerIdentifier().start(user: currentUser)
   }

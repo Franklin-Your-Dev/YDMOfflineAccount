@@ -14,7 +14,7 @@ public class YDOfflineOrdersOrder: Codable {
   public var nfe: String?
   public var date: String?
   public var totalPrice: Double?
-  public var storeId: Int?
+  public var storeId: String?
   public var pdv: Int?
 
   // address
@@ -63,7 +63,8 @@ public class YDOfflineOrdersOrder: Codable {
 
   public var formattedDateSection: String? {
     return date?.date(withFormat: "yyyy-MM-dd'T'HH:mm:ss")?
-      .toFormat("MMMM 'de' YYYY").lowercased(
+      .toFormat("MMMM 'de' YYYY")
+      .lowercased(
         with: Locale(identifier: "pt_BR")
       )
   }
@@ -101,6 +102,47 @@ public class YDOfflineOrdersOrder: Codable {
     case products = "itens"
     case pdv
   }
+
+  // MARK: Init
+  public required init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+
+    cupom = try container.decodeIfPresent(Int.self, forKey: .cupom)
+    nfe = try container.decodeIfPresent(String.self, forKey: .nfe)
+    date = try container.decodeIfPresent(String.self, forKey: .date)
+    totalPrice = try container.decodeIfPresent(Double.self, forKey: .totalPrice)
+    pdv = try container.decodeIfPresent(Int.self, forKey: .pdv)
+
+    storeName = try container.decodeIfPresent(String.self, forKey: .storeName)
+    storeId = transformStoreId(try container.decodeIfPresent(Int.self, forKey: .storeId))
+
+    addressStreet = try container.decodeIfPresent(String.self, forKey: .addressStreet)
+    addressCity = try container.decodeIfPresent(String.self, forKey: .addressCity)
+    addressZipcode = try container.decodeIfPresent(String.self, forKey: .addressZipcode)
+    addressState = try container.decodeIfPresent(String.self, forKey: .addressState)
+    
+    products = try container.decodeIfPresent([YDOfflineOrdersProduct].self, forKey: .products) ?? []
+  }
+}
+
+// MARK: Private actions
+private func transformStoreId(_ idOpt: Int?) -> String {
+  guard let idInt = idOpt else { return "" }
+  let id = "\(idInt)"
+
+  switch id.count {
+    case 1:
+      return "L00\(id)"
+
+    case 2:
+      return "L0\(id)"
+
+    case 3:
+      return "L\(id)"
+
+    default:
+      return id
+  }
 }
 
 // MARK: Mock
@@ -111,7 +153,7 @@ extension YDOfflineOrdersOrder {
     guard let file = getLocalFile(bundle, fileName: "offlineOrders", fileType: "json"),
           let orders = try? JSONDecoder().decode(YDOfflineOrdersOrdersList.self, from: file)
       else {
-      fatalError()
+      fatalError("Não foi possível encontrar o json \"offlineOrders\"")
     }
 
     return orders

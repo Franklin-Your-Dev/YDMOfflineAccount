@@ -48,12 +48,12 @@ public class YDCountDownView: UIView {
       withTimeInterval: 1,
       repeats: true
     ) { [weak self] _ in
-      guard let strongSelf = self else {
+      guard let self = self else {
         self?.updateTimer?.invalidate()
         return
       }
 
-      strongSelf.updateCountDown(with: date)
+      self.updateCountDown(with: date)
     }
   }
 
