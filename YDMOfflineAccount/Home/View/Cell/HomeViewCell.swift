@@ -15,26 +15,30 @@ class HomeViewCell: UICollectionViewCell {
   let card = UIView()
   let imageView = UIImageView()
   let titleLabel = UILabel()
-
+  let newView = YDNewView()
+  
   // MARK: Life cycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupCard()
     setupImage()
     setupTitle()
+    setupBadgeNew()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func prepareForReuse() {
+    newView.isHidden = true
+  }
+  
   // MARK: Actions
   func populateView(item: ItensOffinlineAccount) {
     imageView.image = item.icon
     titleLabel.text = item.title
-    if item.new {
-      showBadgeNew()
-    }
+    newView.isHidden = !item.new
   }
   
 }
@@ -84,10 +88,9 @@ extension HomeViewCell {
     ])
   }
   
-  func showBadgeNew() {
-    let newView = YDNewView()
+  func setupBadgeNew() {
     card.addSubview(newView)
-    
+    newView.isHidden = true
     newView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       newView.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
@@ -95,5 +98,6 @@ extension HomeViewCell {
       newView.heightAnchor.constraint(equalToConstant: 22)
     ])
   }
+  
 }
 
