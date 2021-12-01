@@ -18,21 +18,6 @@ class HomeViewController: UIViewController {
   var viewModel: HomeViewModelDelegate?
   var navBarShadowOff = true
   
-  var listItensOffiline = [
-    ItensOffinlineAccount(
-      icon: YDAssets.Images.store!,
-      title: "suas compras nas lojas físicas",
-      type: .store,
-      new: false
-    ),
-    ItensOffinlineAccount(
-      icon: YDAssets.Images.clipboard!,
-      title: "seu histórico de dados informados nas lojas",
-      type: .clipboard,
-      new: false
-    )
-  ]
-  
   // MARK: Views
   @IBOutlet weak var shadowView: UIView! {
     didSet {
@@ -51,7 +36,7 @@ class HomeViewController: UIViewController {
   
     createBackButton()
     setBinds()
-    buildList()
+    viewModel?.buildList()
     setupCollectionView()
     viewModel?.trackState()
   
@@ -77,20 +62,6 @@ extension HomeViewController {
   
   @objc func onBackAction(_ sender: UIButton) {
     viewModel?.onExit()
-  }
-  
-  func buildList() {
-    
-    if viewModel?.customerIdentifierEnabled ?? false {
-      let customerIdentifier = ItensOffinlineAccount(
-        icon: YDAssets.Images.qrCodeCard!,
-        title: "identifique-se aqui e facilite suas compras nas lojas físicas :)",
-        type: .customerIdentifier,
-        new: viewModel?.flagNewCustomerIdentifierEnable ?? false
-      )
-      listItensOffiline.insert(customerIdentifier, at: 0)
-    }
-    
   }
   
   func toggleNavShadow(_ show: Bool) {

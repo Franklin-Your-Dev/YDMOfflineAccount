@@ -12,6 +12,7 @@ import YDUtilities
 import YDExtensions
 import YDB2WModels
 import YDB2WComponents
+import YDB2WAssets
 
 // MARK: Navigation
 protocol HomeViewModelNavigationDelegate {
@@ -25,10 +26,12 @@ protocol HomeViewModelNavigationDelegate {
 // MARK: Delegate
 protocol HomeViewModelDelegate {
   var currentUser: YDCurrentCustomer { get }
+  var listItensOffiline: [ItensOffinlineAccount] { get set }
   var error: Binder<(title: String, message: String)> { get }
   var customerIdentifierEnabled: Bool { get set }
   var flagNewCustomerIdentifierEnable: Bool { get set }
   func onExit()
+  func buildList()
   func trackState()
   func onCard(tag: ItensOffilineAccountEnum)
 }
@@ -43,6 +46,21 @@ class HomeViewModel {
   var flagNewCustomerIdentifierEnable = false
 
   var userClientLasaToken: String = ""
+  
+  var listItensOffiline = [
+    ItensOffinlineAccount(
+      icon: YDAssets.Images.store!,
+      title: "suas compras nas lojas físicas",
+      type: .store,
+      new: false
+    ),
+    ItensOffinlineAccount(
+      icon: YDAssets.Images.clipboard!,
+      title: "seu histórico de dados informados nas lojas",
+      type: .clipboard,
+      new: false
+    )
+  ]
 
   // MARK: Init
   init(
@@ -81,6 +99,20 @@ class HomeViewModel {
 extension HomeViewModel: HomeViewModelDelegate {
   func onExit() {
     navigation.onExit()
+  }
+  
+  func buildList() {
+    
+    if customerIdentifierEnabled {
+      let customerIdentifier = ItensOffinlineAccount(
+        icon: YDAssets.Images.qrCodeCard!,
+        title: "identifique-se aqui e facilite suas compras nas lojas físicas :)",
+        type: .customerIdentifier,
+        new: flagNewCustomerIdentifierEnable
+      )
+      listItensOffiline.insert(customerIdentifier, at: 0)
+    }
+    
   }
 
   func trackState() {
