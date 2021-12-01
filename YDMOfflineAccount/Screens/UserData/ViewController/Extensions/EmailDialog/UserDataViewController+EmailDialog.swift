@@ -22,12 +22,19 @@ extension UserDataViewController {
       mailComposerVC.setSubject(subject)
       mailComposerVC.setMessageBody(body, isHTML: true)
       present(mailComposerVC, animated: true, completion: nil)
-    } else {
+    } else {      
       guard let coded = "mailto:\(email)?subject=\(subject)&body=\(body)"
               .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-        let emailURL = URL(string: coded) else { return }
+            let emailURL = URL(string: coded)
+      else {
+        viewModel?.onBack()
+        return
+      }
       
+      if UIApplication.shared.canOpenURL(emailURL) {
         UIApplication.shared.open(emailURL, options: [:])
+      }
+      viewModel?.onBack()
     }
   }
 }
