@@ -63,5 +63,11 @@ extension UserDataViewController {
       self.historicButton.isHidden = false
       self.separatorView.isHidden = false
     }
+    
+    viewModel?.emailDialog.bind { [weak self] _ in
+      guard let self = self else { return }
+      
+      self.openEmailDialog()
+    }
   }
 }

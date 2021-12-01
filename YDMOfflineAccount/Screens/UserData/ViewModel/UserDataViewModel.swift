@@ -31,6 +31,7 @@ protocol UserDataViewModelDelegate {
   var usersInfo: Binder<[YDLasaClientDataSet]> { get }
   var userData: YDLasaClientInfo? { get set }
   var quizEnabled: Bool { get set }
+  var emailDialog: Binder<Bool> { get }
 
   subscript(_ index: Int) -> YDLasaClientDataSet? { get }
 
@@ -58,6 +59,8 @@ class UserDataViewModel {
   var usersInfo: Binder<[YDLasaClientDataSet]> = Binder([])
   
   var quizEnabled = false
+  
+  var emailDialog: Binder<Bool> = Binder(false)
 
   let errorMessageIncompletePerfil = (
     title: "poooxa, ainda não temos seu cadastro completo",
@@ -78,26 +81,7 @@ class UserDataViewModel {
     self.navigation = navigation
     self.currentUser = user
     
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizSuccess),
-      name: YDConstants.Notification.QuizSuccess,
-      object: nil
-    )
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizWrongAnswerOrExit),
-      name: YDConstants.Notification.QuizWrongAnswer,
-      object: nil
-    )
-
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizWrongAnswerOrExit),
-      name: YDConstants.Notification.QuizExit,
-      object: nil
-    )
+    configureObservers()
   }
   
   deinit {
@@ -196,15 +180,6 @@ class UserDataViewModel {
           }
       }
     }
-  }
-  
-  @objc func fromQuizSuccess() {
-    getUsersInfo()
-    snackBarMessage.value = "Seus dados foram atualizados com sucesso"
-  }
-  
-  @objc func fromQuizWrongAnswerOrExit() {
-    onBack()
   }
 }
 

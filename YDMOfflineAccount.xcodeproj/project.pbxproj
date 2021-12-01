@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920744DF275717EF000311D5 /* UserDataViewController+EmailDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920744DE275717EF000311D5 /* UserDataViewController+EmailDialog.swift */; };
+		920744E327571BB3000311D5 /* HomeViewModel+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920744E227571BB3000311D5 /* HomeViewModel+Observers.swift */; };
+		920744E627572097000311D5 /* HomeViewController+EmailDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920744E527572097000311D5 /* HomeViewController+EmailDialog.swift */; };
 		920E237127563BCE003C73DB /* ItensOffinlineAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */; };
 		920E2375275668D7003C73DB /* HomeViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E2374275668D7003C73DB /* HomeViewController+Layout.swift */; };
 		92427B9127308266007358A4 /* YDMOfflineAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 92427B8F27308266007358A4 /* YDMOfflineAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +54,7 @@
 		92427C12273082E9007358A4 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BE8273082E9007358A4 /* TermsViewModel.swift */; };
 		92427C13273082E9007358A4 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEA273082E9007358A4 /* UserDataViewModel.swift */; };
 		92427C14273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */; };
+		925BCE512756DC0700FD3AB4 /* UserDataViewModel+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BCE502756DC0700FD3AB4 /* UserDataViewModel+Observers.swift */; };
 		9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42427517043002991AC /* HomeHeaderViewCell.swift */; };
 		9294A42727517043002991AC /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42527517043002991AC /* HomeViewCell.swift */; };
 		9294A42D275319E7002991AC /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */; };
@@ -61,6 +65,9 @@
 		01CA1AB3BDF0E2149CF5A127 /* Pods-YDMOfflineAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDMOfflineAccount.release.xcconfig"; path = "Target Support Files/Pods-YDMOfflineAccount/Pods-YDMOfflineAccount.release.xcconfig"; sourceTree = "<group>"; };
 		01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDMOfflineAccount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5719294B3B64F5D6E4537C /* Pods-YDMOfflineAccount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDMOfflineAccount.debug.xcconfig"; path = "Target Support Files/Pods-YDMOfflineAccount/Pods-YDMOfflineAccount.debug.xcconfig"; sourceTree = "<group>"; };
+		920744DE275717EF000311D5 /* UserDataViewController+EmailDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataViewController+EmailDialog.swift"; sourceTree = "<group>"; };
+		920744E227571BB3000311D5 /* HomeViewModel+Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Observers.swift"; sourceTree = "<group>"; };
+		920744E527572097000311D5 /* HomeViewController+EmailDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+EmailDialog.swift"; sourceTree = "<group>"; };
 		920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItensOffinlineAccount.swift; sourceTree = "<group>"; };
 		920E2374275668D7003C73DB /* HomeViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Layout.swift"; sourceTree = "<group>"; };
 		92427B8C27308266007358A4 /* YDMOfflineAccount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YDMOfflineAccount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +114,7 @@
 		92427BE8273082E9007358A4 /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		92427BEA273082E9007358A4 /* UserDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMStoreModeOfflineAccountCoordinator.swift; sourceTree = "<group>"; };
+		925BCE502756DC0700FD3AB4 /* UserDataViewModel+Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataViewModel+Observers.swift"; sourceTree = "<group>"; };
 		9294A42427517043002991AC /* HomeHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewCell.swift; sourceTree = "<group>"; };
 		9294A42527517043002991AC /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
@@ -139,6 +147,38 @@
 				01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		920744DD275717CE000311D5 /* EmailDialog */ = {
+			isa = PBXGroup;
+			children = (
+				920744DE275717EF000311D5 /* UserDataViewController+EmailDialog.swift */,
+			);
+			path = EmailDialog;
+			sourceTree = "<group>";
+		};
+		920744E027571BA1000311D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				920744E127571BA6000311D5 /* Observers */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		920744E127571BA6000311D5 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				920744E227571BB3000311D5 /* HomeViewModel+Observers.swift */,
+			);
+			path = Observers;
+			sourceTree = "<group>";
+		};
+		920744E427572085000311D5 /* EmailDialog */ = {
+			isa = PBXGroup;
+			children = (
+				920744E527572097000311D5 /* HomeViewController+EmailDialog.swift */,
+			);
+			path = EmailDialog;
 			sourceTree = "<group>";
 		};
 		920E236F27563BC2003C73DB /* Model */ = {
@@ -182,7 +222,7 @@
 			children = (
 				92427B99273082E8007358A4 /* Components */,
 				92427BEB273082E9007358A4 /* Coordinator */,
-				9294A39D27513E9E002991AC /* Home */,
+				925BCE522756E69100FD3AB4 /* Screens */,
 				92427B9C273082E9007358A4 /* Resource */,
 				92427B9F273082E9007358A4 /* View */,
 				92427BB4273082E9007358A4 /* ViewController */,
@@ -223,7 +263,6 @@
 			children = (
 				92427BA2273082E9007358A4 /* Historic */,
 				92427BA5273082E9007358A4 /* Terms */,
-				92427BA7273082E9007358A4 /* UserData */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,14 +295,14 @@
 			path = Terms;
 			sourceTree = "<group>";
 		};
-		92427BA7273082E9007358A4 /* UserData */ = {
+		92427BA7273082E9007358A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				92427BA8273082E9007358A4 /* UserDataViewController.storyboard */,
 				92427BA9273082E9007358A4 /* Cell */,
 				92427BB2273082E9007358A4 /* UserDataViewController+Layout.swift */,
 			);
-			path = UserData;
+			path = View;
 			sourceTree = "<group>";
 		};
 		92427BA9273082E9007358A4 /* Cell */ = {
@@ -314,7 +353,6 @@
 			children = (
 				92427BBE273082E9007358A4 /* Historic */,
 				92427BC8273082E9007358A4 /* Terms */,
-				92427BCD273082E9007358A4 /* UserData */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -332,10 +370,11 @@
 		92427BB7273082E9007358A4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9294A42B275319CE002991AC /* CollectionView */,
-				92427BB8273082E9007358A4 /* ScrollView */,
-				92427BBA273082E9007358A4 /* Dialog */,
 				92427BBC273082E9007358A4 /* Binds */,
+				9294A42B275319CE002991AC /* CollectionView */,
+				92427BBA273082E9007358A4 /* Dialog */,
+				920744E427572085000311D5 /* EmailDialog */,
+				92427BB8273082E9007358A4 /* ScrollView */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -432,22 +471,23 @@
 			path = Binds;
 			sourceTree = "<group>";
 		};
-		92427BCD273082E9007358A4 /* UserData */ = {
+		92427BCD273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				92427BCE273082E9007358A4 /* UserDataViewController.swift */,
 				92427BCF273082E9007358A4 /* Extensions */,
 			);
-			path = UserData;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		92427BCF273082E9007358A4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				92427BDF273082E9007358A4 /* Binds */,
+				920744DD275717CE000311D5 /* EmailDialog */,
+				92427BDD273082E9007358A4 /* Dialog */,
 				92427BD0273082E9007358A4 /* ScrollView */,
 				92427BD2273082E9007358A4 /* TableView */,
-				92427BDD273082E9007358A4 /* Dialog */,
-				92427BDF273082E9007358A4 /* Binds */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -533,7 +573,6 @@
 			children = (
 				92427BE5273082E9007358A4 /* Historic */,
 				92427BE7273082E9007358A4 /* Terms */,
-				92427BE9273082E9007358A4 /* UserData */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -557,7 +596,9 @@
 		92427BE9273082E9007358A4 /* UserData */ = {
 			isa = PBXGroup;
 			children = (
-				92427BEA273082E9007358A4 /* UserDataViewModel.swift */,
+				92427BA7273082E9007358A4 /* View */,
+				92427BCD273082E9007358A4 /* ViewController */,
+				925BCE532756E6A900FD3AB4 /* ViewModel */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -568,6 +609,40 @@
 				92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		925BCE4E2756DBF400FD3AB4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				925BCE4F2756DBFA00FD3AB4 /* Observers */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		925BCE4F2756DBFA00FD3AB4 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				925BCE502756DC0700FD3AB4 /* UserDataViewModel+Observers.swift */,
+			);
+			path = Observers;
+			sourceTree = "<group>";
+		};
+		925BCE522756E69100FD3AB4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9294A39D27513E9E002991AC /* Home */,
+				92427BE9273082E9007358A4 /* UserData */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		925BCE532756E6A900FD3AB4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				92427BEA273082E9007358A4 /* UserDataViewModel.swift */,
+				925BCE4E2756DBF400FD3AB4 /* Extensions */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9294A39D27513E9E002991AC /* Home */ = {
@@ -584,6 +659,7 @@
 		9294A39E27513EB5002991AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				920744E027571BA1000311D5 /* Extensions */,
 				92427BE2273082E9007358A4 /* PreHomeViewModel.swift */,
 				92427BE4273082E9007358A4 /* HomeViewModel.swift */,
 			);
@@ -722,9 +798,12 @@
 				920E2375275668D7003C73DB /* HomeViewController+Layout.swift in Sources */,
 				92427C0B273082E9007358A4 /* UserDataInfoTableViewCell.swift in Sources */,
 				92427C0C273082E9007358A4 /* UserDataMarketingTableViewCell.swift in Sources */,
+				925BCE512756DC0700FD3AB4 /* UserDataViewModel+Observers.swift in Sources */,
 				92427C13273082E9007358A4 /* UserDataViewModel.swift in Sources */,
+				920744E327571BB3000311D5 /* HomeViewModel+Observers.swift in Sources */,
 				92427C09273082E9007358A4 /* UserDataSeparatorTableViewCell.swift in Sources */,
 				92427C14273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift in Sources */,
+				920744DF275717EF000311D5 /* UserDataViewController+EmailDialog.swift in Sources */,
 				92427BFF273082E9007358A4 /* HistoricViewController.swift in Sources */,
 				92427C0E273082E9007358A4 /* UserDataViewController+Binds.swift in Sources */,
 				92427BFA273082E9007358A4 /* PreHomeViewController+Layout.swift in Sources */,
@@ -748,6 +827,7 @@
 				92427C12273082E9007358A4 /* TermsViewModel.swift in Sources */,
 				9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */,
 				92427C06273082E9007358A4 /* UserDataViewController.swift in Sources */,
+				920744E627572097000311D5 /* HomeViewController+EmailDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

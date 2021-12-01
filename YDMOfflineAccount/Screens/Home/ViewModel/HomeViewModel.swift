@@ -27,6 +27,8 @@ protocol HomeViewModelDelegate {
   var currentUser: YDCurrentCustomer { get }
   var error: Binder<(title: String, message: String)> { get }
   var customerIdentifierEnabled: Bool { get set }
+  var emailDialog: Binder<Bool> { get }
+  
   func onExit()
   func trackState()
   func onCard(tag: ItensOffilineAccountEnum)
@@ -39,6 +41,7 @@ class HomeViewModel {
   var currentUser: YDCurrentCustomer
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
   var customerIdentifierEnabled = true
+  var emailDialog = Binder(false)
   
   var userClientLasaToken: String = ""
 
@@ -96,6 +99,7 @@ extension HomeViewModel: HomeViewModelDelegate {
             withParameters: parameters
           )
         
+        addQuizObservers()
         navigation.openOfflineOrders()
     }
   }
