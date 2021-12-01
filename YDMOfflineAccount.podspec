@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name = "YDMOfflineAccount"
-  spec.version = "1.6.5"
+  spec.version = "1.6.6"
   spec.summary = "A short description of YDMOfflineAccount."
   spec.homepage = "http://yourdev/YDMOfflineAccount"
 
