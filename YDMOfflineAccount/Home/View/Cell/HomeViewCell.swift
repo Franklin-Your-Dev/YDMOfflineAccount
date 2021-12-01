@@ -7,6 +7,7 @@
 
 import UIKit
 import YDB2WColors
+import YDB2WComponents
 
 class HomeViewCell: UICollectionViewCell {
   
@@ -14,16 +15,13 @@ class HomeViewCell: UICollectionViewCell {
   let card = UIView()
   let imageView = UIImageView()
   let titleLabel = UILabel()
-  let newContainer = UIView()
-  let newLabel = UILabel()
- 
+
   // MARK: Life cycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupCard()
     setupImage()
     setupTitle()
-    setupNewLabel()
   }
   
   required init?(coder: NSCoder) {
@@ -34,7 +32,9 @@ class HomeViewCell: UICollectionViewCell {
   func populateView(item: ItensOffinlineAccount) {
     imageView.image = item.icon
     titleLabel.text = item.title
-    newContainer.isHidden = !item.new
+    if item.new {
+      showBadgeNew()
+    }
   }
   
 }
@@ -71,7 +71,7 @@ extension HomeViewCell {
   func setupTitle() {
     card.addSubview(titleLabel)
     
-    titleLabel.textAlignment = .center
+    titleLabel.textAlignment = .left
     titleLabel.textColor = YDColors.black
     titleLabel.font = .systemFont(ofSize: 16)
     titleLabel.numberOfLines = 0
@@ -84,35 +84,16 @@ extension HomeViewCell {
     ])
   }
   
-  func setupNewContainer() {
-    card.addSubview(newContainer)
+  func showBadgeNew() {
+    let newView = YDNewView()
+    card.addSubview(newView)
     
-    newContainer.backgroundColor = YDColors.branding
-    newContainer.layer.masksToBounds = true
-    newContainer.layer.cornerRadius = 10
-    
-    newContainer.translatesAutoresizingMaskIntoConstraints = false
+    newView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      newContainer.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
-      newContainer.topAnchor.constraint(equalTo: card.topAnchor, constant: 12),
-      newContainer.heightAnchor.constraint(equalToConstant: 22)
+      newView.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
+      newView.topAnchor.constraint(equalTo: card.topAnchor, constant: 12),
+      newView.heightAnchor.constraint(equalToConstant: 22)
     ])
   }
-  
-  func setupNewLabel() {
-    newContainer.addSubview(newLabel)
-    newLabel.textColor = .white
-    newLabel.textAlignment = .center
-    newLabel.font = UIFont.systemFont(ofSize: 14)
-    newLabel.text = "novo"
-    
-    newLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      newLabel.centerYAnchor.constraint(equalTo: newContainer.centerYAnchor),
-      newLabel.leadingAnchor.constraint(equalTo: newContainer.leadingAnchor, constant: 12),
-      newLabel.trailingAnchor.constraint(equalTo: newContainer.trailingAnchor, constant: -12)
-    ])
-    
-  }
-  
 }
+

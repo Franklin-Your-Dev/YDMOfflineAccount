@@ -90,6 +90,11 @@ public enum YDConfigProperty: String {
   // Tax Coupon
   case taxCouponShareEnabled = "isTaxCouponSaveAndShareButtonsEnabled"
   
+  // Customer Identifier
+  case homeCustomerIdentifierEnable = "showCarouselButtonUserIdentifier"
+  case offlineAccountCustomerIdentifierEnable = "showFeaturesButtonUserIdentifier"
+  case showBadgeNewCustomerIdentifierEnable = "showButtonUserIdentifierNewBadge"
+  
   // Miscellaneous
   case secret
   case urlPrivacyPolicy = "url_privacy_policy"

@@ -86,7 +86,7 @@ extension HomeViewController {
         icon: YDAssets.Images.qrCodeCard!,
         title: "identifique-se aqui e facilite suas compras nas lojas físicas :)",
         type: .customerIdentifier,
-        new: true
+        new: viewModel?.flagNewCustomerIdentifierEnable ?? false
       )
       listItensOffiline.insert(customerIdentifier, at: 0)
     }

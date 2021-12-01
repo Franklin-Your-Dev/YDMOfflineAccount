@@ -51,7 +51,7 @@ class ProductDetailsViewModel {
     )
 
     currentStore.value = YDStore(
-      id: "\(order.storeId ?? 0)",
+      id: order.storeId,
       name: order.formattedStoreName,
       address: address
     )
@@ -163,13 +163,13 @@ extension ProductDetailsViewModel: ProductDetailsViewModelDelegate {
   
   func getProductFromService() {
     let ean = currentProductOnlineOffline.value?.ean ?? ""
-    let storeId = order.storeId ?? 0
+    let storeId = order.storeId
     
     loading.value = true
     
     service.getProductsFromRESQL(
       eans: [ean],
-      storeId: "\(storeId)"
+      storeId: storeId
     ) { [weak self] (response: Result<YDProductsRESQL, YDB2WServices.YDServiceError>) in
       guard let self = self else { return }
 

@@ -50,6 +50,17 @@ public class YDMStoreModeOfflineAccountCoordinator: HistoricNavigationDelegate {
     }
 
     homeViewModel = HomeViewModel(navigation: self, user: currentUser)
+    
+    if let extras = YDIntegrationHelper.shared.getFeature(featureName: YDConfigKeys.store.rawValue)?.extras {
+      if let customerIdentifierEnabled = extras[YDConfigProperty.offlineAccountCustomerIdentifierEnable.rawValue] as? Bool {
+        viewController.viewModel?.customerIdentifierEnabled = customerIdentifierEnabled
+      }
+      
+      if let flagNewCustomerIdentifierEnable = extras[YDConfigProperty.showBadgeNewCustomerIdentifierEnable.rawValue] as? Bool {
+        viewController.viewModel?.flagNewCustomerIdentifierEnable = flagNewCustomerIdentifierEnable
+      }
+    }
+    
     viewController.viewModel = homeViewModel
 
     navigationController?.pushViewController(viewController, animated: false)

@@ -27,6 +27,7 @@ protocol HomeViewModelDelegate {
   var currentUser: YDCurrentCustomer { get }
   var error: Binder<(title: String, message: String)> { get }
   var customerIdentifierEnabled: Bool { get set }
+  var flagNewCustomerIdentifierEnable: Bool { get set }
   func onExit()
   func trackState()
   func onCard(tag: ItensOffilineAccountEnum)
@@ -38,8 +39,9 @@ class HomeViewModel {
   let navigation: HomeViewModelNavigationDelegate
   var currentUser: YDCurrentCustomer
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
-  var customerIdentifierEnabled = true
-  
+  var customerIdentifierEnabled = false
+  var flagNewCustomerIdentifierEnable = false
+
   var userClientLasaToken: String = ""
 
   // MARK: Init
@@ -92,19 +94,6 @@ extension HomeViewModel: HomeViewModelDelegate {
         navigation.openCustomerIdentifier()
         
       case .store:
-        // User Data
-        let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "meus dados"])
-        
-        YDIntegrationHelper.shared
-          .trackEvent(
-            withName: .offlineAccountPerfil,
-            ofType: .action,
-            withParameters: parameters
-          )
-        
-        navigation.openUserData()
-
-      case .clipboard:
         // Offline orders
         let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "minhas compras"])
         
@@ -116,6 +105,19 @@ extension HomeViewModel: HomeViewModelDelegate {
           )
         
         navigation.openOfflineOrders()
+
+      case .clipboard:
+        // User Data
+        let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "meus dados"])
+        
+        YDIntegrationHelper.shared
+          .trackEvent(
+            withName: .offlineAccountPerfil,
+            ofType: .action,
+            withParameters: parameters
+          )
+        
+        navigation.openUserData()
     }
   }
 }

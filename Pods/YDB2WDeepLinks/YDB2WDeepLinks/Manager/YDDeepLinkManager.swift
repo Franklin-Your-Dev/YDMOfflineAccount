@@ -25,9 +25,10 @@ public class YDDeepLinkManager {
 
 // MARK: Private Actions
 extension YDDeepLinkManager {
-  private func determineWhatToGo(with path: YDDeepLinksParserTypes, parameters: [String : Any]?, url: URL) {
+  private func determineWhatToGo(with path: YDDeepLinksParserTypes, parameters: [String: Any]?, url: URL) {
     switch path {
-      case .nps: break
+      case .nps:
+        onStoreMode(urlString: url.absoluteString)
         
       case .liveNeedHelp:
         onLiveNeedHelp()
