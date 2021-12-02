@@ -42,8 +42,8 @@ class HomeViewModel {
   let navigation: HomeViewModelNavigationDelegate
   var currentUser: YDCurrentCustomer
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
-  var customerIdentifierEnabled = true
-  var flagNewCustomerIdentifierEnable = true
+  var customerIdentifierEnabled = false
+  var flagNewCustomerIdentifierEnable = false
 
   var userClientLasaToken: String = ""
   
