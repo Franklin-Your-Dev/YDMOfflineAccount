@@ -53,11 +53,12 @@ public class YDMStoreModeOfflineAccountCoordinator: HistoricNavigationDelegate {
     
     if let extras = YDIntegrationHelper.shared.getFeature(featureName: YDConfigKeys.store.rawValue)?.extras {
       if let customerIdentifierEnabled = extras[YDConfigProperty.offlineAccountCustomerIdentifierEnable.rawValue] as? Bool {
-        viewController.viewModel?.customerIdentifierEnabled = customerIdentifierEnabled
+        homeViewModel?.customerIdentifierEnabled = customerIdentifierEnabled
+        
       }
       
       if let flagNewCustomerIdentifierEnable = extras[YDConfigProperty.showBadgeNewCustomerIdentifierEnable.rawValue] as? Bool {
-        viewController.viewModel?.flagNewCustomerIdentifierEnable = flagNewCustomerIdentifierEnable
+        homeViewModel?.flagNewCustomerIdentifierEnable = flagNewCustomerIdentifierEnable
       }
     }
     
