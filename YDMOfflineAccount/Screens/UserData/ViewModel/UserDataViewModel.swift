@@ -31,6 +31,7 @@ protocol UserDataViewModelDelegate {
   var usersInfo: Binder<[YDLasaClientDataSet]> { get }
   var userData: YDLasaClientInfo? { get set }
   var quizEnabled: Bool { get set }
+  var emailDialog: Binder<Bool> { get }
 
   subscript(_ index: Int) -> YDLasaClientDataSet? { get }
 
@@ -58,6 +59,8 @@ class UserDataViewModel {
   var usersInfo: Binder<[YDLasaClientDataSet]> = Binder([])
   
   var quizEnabled = false
+  
+  var emailDialog: Binder<Bool> = Binder(false)
 
   let errorMessageIncompletePerfil = (
     title: "poooxa, ainda não temos seu cadastro completo",
@@ -77,28 +80,8 @@ class UserDataViewModel {
     self.service = service
     self.navigation = navigation
     self.currentUser = user
-    self.trackEvent(.offlineAccountUsersInfo, ofType: .state)
     
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizSuccess),
-      name: YDConstants.Notification.QuizSuccess,
-      object: nil
-    )
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizWrongAnswerOrExit),
-      name: YDConstants.Notification.QuizWrongAnswer,
-      object: nil
-    )
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizWrongAnswerOrExit),
-      name: YDConstants.Notification.QuizExit,
-      object: nil
-    )
+    configureObservers()
   }
   
   deinit {
@@ -115,56 +98,6 @@ class UserDataViewModel {
       .trackEvent(withName: event, ofType: type, withParameters: params)
   }
 
-  func getUsersInfoMock() {
-    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-      let jsonString = """
-      {
-        "id_lasa": "a3c93817-40de-43d1-9e12-0e994ac8835d",
-        "nome_completo": "Natália Prado Tiago",
-        "sexo": null,
-        "estado_civil": null,
-        "data_nascimento": "1994-10-29T00:00:00",
-        "logradouro": "Rua Senador Vergueiro",
-        "numero": "5",
-        "complemento": "Bloco 3 apto 316 - Perto da renner",
-        "municipio": "Rio de Janeiro",
-        "cep": "22230000",
-        "bairro": "Flamengo",
-        "uf": "BR",
-        "telefone_celular": "33933198",
-        "telefone_residencial": "",
-        "email": "nataliaprado29@gmail.com",
-        "optin_marketing": false,
-        "optin_termos_condicoes": false
-      }
-      """
-
-      let userLoginString = """
-      {
-        "cpf": "13569901777",
-        "nome": "Natália Prado Tiago",
-        "email": "pradocinhosgourmet@gmail.com",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZExhc2EiOiJhM2M5MzgxNy00MGRlLTQzZDEtOWUxMi0wZTk5NGFjODgzNWQiLCJpYXQiOjE2MTI4Nzc4NjIsImV4cCI6MTYxMjk2NDI2Mn0.HZTMQSnHJ79on1U46Wo8KyVbCHTjTAHTGeh4WAw9mR0",
-        "id_lasa": "a3c93817-40de-43d1-9e12-0e994ac8835d"
-      }
-      """
-
-      guard let data = jsonString.data(using: .utf16),
-            let json = try? JSONDecoder().decode(YDLasaClientInfo.self, from: data),
-            let dataUserLogin = userLoginString.data(using: .utf16),
-            let userLogin = try? JSONDecoder().decode(YDLasaClientLogin.self, from: dataUserLogin)
-      else {
-        return
-      }
-
-      self.userLogin = userLogin
-      self.userData = json
-      self.usersInfo.value = json.getUserDataSets()
-
-      self.loading.value = false
-    }
-  }
-
   func getClientInfo(with user: YDLasaClientLogin) {
     userLogin = user
 
@@ -177,6 +110,7 @@ class UserDataViewModel {
         case .success(let data):
           self.userData = data
           self.usersInfo.value = data.getUserDataSets()
+          self.trackEvent(.offlineAccountUsersInfo, ofType: .state)
           self.loading.value = false
 
         case .failure(let error):
@@ -197,15 +131,6 @@ class UserDataViewModel {
       }
     }
   }
-  
-  @objc func fromQuizSuccess() {
-    getUsersInfo()
-    snackBarMessage.value = "Seus dados foram atualizados com sucesso"
-  }
-  
-  @objc func fromQuizWrongAnswerOrExit() {
-    navigation.onBack()
-  }
 }
 
 // MARK: Extension
@@ -216,6 +141,7 @@ extension UserDataViewModel: UserDataViewModelDelegate {
 
   func onBack() {
     navigation.onBack()
+    NotificationCenter.default.removeObserver(self)
   }
 
   func getUsersInfo() {
@@ -241,7 +167,6 @@ extension UserDataViewModel: UserDataViewModelDelegate {
               self.trackEvent(.offlineAccountModalIncomplete, ofType: .state)
               
               if self.quizEnabled {
-                self.errorView.fire()
                 self.navigation.openQuiz()
               } else {
                 self.error.value = self.errorMessageIncompletePerfil
@@ -301,6 +226,59 @@ extension UserDataViewModel: UserDataViewModelDelegate {
         case .failure:
           self.snackBarMessage.value = "Ops! Algo inesperado aconteceu. Tente novamente."
       }
+    }
+  }
+}
+
+// MARK: Mock
+extension UserDataViewModel {
+  func getUsersInfoMock() {
+    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+      let jsonString = """
+      {
+        "id_lasa": "a3c93817-40de-43d1-9e12-0e994ac8835d",
+        "nome_completo": "Natália Prado Tiago",
+        "sexo": null,
+        "estado_civil": null,
+        "data_nascimento": "1994-10-29T00:00:00",
+        "logradouro": "Rua Senador Vergueiro",
+        "numero": "5",
+        "complemento": "Bloco 3 apto 316 - Perto da renner",
+        "municipio": "Rio de Janeiro",
+        "cep": "22230000",
+        "bairro": "Flamengo",
+        "uf": "BR",
+        "telefone_celular": "33933198",
+        "telefone_residencial": "",
+        "email": "nataliaprado29@gmail.com",
+        "optin_marketing": false,
+        "optin_termos_condicoes": false
+      }
+      """
+
+      let userLoginString = """
+      {
+        "cpf": "13569901777",
+        "nome": "Natália Prado Tiago",
+        "email": "pradocinhosgourmet@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZExhc2EiOiJhM2M5MzgxNy00MGRlLTQzZDEtOWUxMi0wZTk5NGFjODgzNWQiLCJpYXQiOjE2MTI4Nzc4NjIsImV4cCI6MTYxMjk2NDI2Mn0.HZTMQSnHJ79on1U46Wo8KyVbCHTjTAHTGeh4WAw9mR0",
+        "id_lasa": "a3c93817-40de-43d1-9e12-0e994ac8835d"
+      }
+      """
+
+      guard let data = jsonString.data(using: .utf16),
+            let json = try? JSONDecoder().decode(YDLasaClientInfo.self, from: data),
+            let dataUserLogin = userLoginString.data(using: .utf16),
+            let userLogin = try? JSONDecoder().decode(YDLasaClientLogin.self, from: dataUserLogin)
+      else {
+        return
+      }
+
+      self.userLogin = userLogin
+      self.userData = json
+      self.usersInfo.value = json.getUserDataSets()
+
+      self.loading.value = false
     }
   }
 }

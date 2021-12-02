@@ -30,6 +30,8 @@ protocol HomeViewModelDelegate {
   var error: Binder<(title: String, message: String)> { get }
   var customerIdentifierEnabled: Bool { get set }
   var flagNewCustomerIdentifierEnable: Bool { get set }
+  var emailDialog: Binder<Bool> { get }
+  
   func onExit()
   func buildList()
   func trackState()
@@ -45,6 +47,9 @@ class HomeViewModel {
   var customerIdentifierEnabled = false
   var flagNewCustomerIdentifierEnable = false
 
+  var customerIdentifierEnabled = true
+  var emailDialog = Binder(false)
+  
   var userClientLasaToken: String = ""
   
   var listItensOffiline: Binder<[ItensOffinlineAccount]> = Binder([ItensOffinlineAccount(
@@ -67,29 +72,10 @@ class HomeViewModel {
   ) {
     self.navigation = navigation
     self.currentUser = user
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizWrongAnswer),
-      name: YDConstants.Notification.QuizWrongAnswer,
-      object: nil
-    )
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(fromQuizWrongAnswer),
-      name: YDConstants.Notification.QuizExit,
-      object: nil
-    )
   }
   
   deinit {
     NotificationCenter.default.removeObserver(self)
-  }
-  
-  // MARK: Actions
-  @objc func fromQuizWrongAnswer() {
-    navigation.onBack()
   }
 }
 
@@ -134,6 +120,7 @@ extension HomeViewModel: HomeViewModelDelegate {
             withParameters: parameters
           )
         
+        addQuizObservers()
         navigation.openOfflineOrders()
 
       case .clipboard:
