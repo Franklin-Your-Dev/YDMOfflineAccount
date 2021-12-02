@@ -36,8 +36,8 @@ class HomeViewController: UIViewController {
   
     createBackButton()
     setBinds()
-    viewModel?.buildList()
     setupCollectionView()
+    viewModel?.buildList()
     viewModel?.trackState()
   
   }

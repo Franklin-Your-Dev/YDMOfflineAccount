@@ -12,5 +12,12 @@ extension HomeViewController {
     viewModel?.error.bind { [weak self] params in
       self?.showAlert(title: params.title, message: params.message)
     }
+    
+    viewModel?.listItensOffiline.bind { _ in
+      DispatchQueue.main.async { [weak self] in
+        self?.collectionView?.reloadData()
+      }
+    }
+    
   }
 }

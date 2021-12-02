@@ -26,7 +26,7 @@ protocol HomeViewModelNavigationDelegate {
 // MARK: Delegate
 protocol HomeViewModelDelegate {
   var currentUser: YDCurrentCustomer { get }
-  var listItensOffiline: [ItensOffinlineAccount] { get set }
+  var listItensOffiline: Binder<[ItensOffinlineAccount]> { get }
   var error: Binder<(title: String, message: String)> { get }
   var customerIdentifierEnabled: Bool { get set }
   var flagNewCustomerIdentifierEnable: Bool { get set }
@@ -42,25 +42,23 @@ class HomeViewModel {
   let navigation: HomeViewModelNavigationDelegate
   var currentUser: YDCurrentCustomer
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
-  var customerIdentifierEnabled = false
-  var flagNewCustomerIdentifierEnable = false
+  var customerIdentifierEnabled = true
+  var flagNewCustomerIdentifierEnable = true
 
   var userClientLasaToken: String = ""
   
-  var listItensOffiline = [
-    ItensOffinlineAccount(
-      icon: YDAssets.Images.store!,
-      title: "suas compras nas lojas físicas",
-      type: .store,
-      new: false
-    ),
-    ItensOffinlineAccount(
-      icon: YDAssets.Images.clipboard!,
-      title: "seu histórico de dados informados nas lojas",
-      type: .clipboard,
-      new: false
-    )
-  ]
+  var listItensOffiline: Binder<[ItensOffinlineAccount]> = Binder([ItensOffinlineAccount(
+    icon: YDAssets.Images.store!,
+    title: "suas compras nas lojas físicas",
+    type: .store,
+    new: false
+  ),
+  ItensOffinlineAccount(
+    icon: YDAssets.Images.clipboard!,
+    title: "seu histórico de dados informados nas lojas",
+    type: .clipboard,
+    new: false
+  )])
 
   // MARK: Init
   init(
@@ -110,7 +108,7 @@ extension HomeViewModel: HomeViewModelDelegate {
         type: .customerIdentifier,
         new: flagNewCustomerIdentifierEnable
       )
-      listItensOffiline.insert(customerIdentifier, at: 0)
+      listItensOffiline.value.insert(customerIdentifier, at: 0)
     }
     
   }

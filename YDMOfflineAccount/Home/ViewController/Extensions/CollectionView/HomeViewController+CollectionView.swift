@@ -11,7 +11,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
   
   func collectionView(_ collectionView: UICollectionView,
                       numberOfItemsInSection section: Int) -> Int {
-    return viewModel?.listItensOffiline.count ?? 0
+    return viewModel?.listItensOffiline.value.count ?? 0
   }
   
   func collectionView(
@@ -24,7 +24,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
       for: indexPath
     ) as! HomeViewCell
     
-    if let item = viewModel?.listItensOffiline[indexPath.row] {
+    if let item = viewModel?.listItensOffiline.value[indexPath.row] {
       cell.populateView(item: item)
     }
     
@@ -68,7 +68,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let item = viewModel?.listItensOffiline[indexPath.row].type {
+    if let item = viewModel?.listItensOffiline.value[indexPath.row].type {
       viewModel?.onCard(tag: item)
     }
   }
