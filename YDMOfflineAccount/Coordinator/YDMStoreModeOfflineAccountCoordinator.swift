@@ -16,9 +16,9 @@ import YDQuiz
 import YDMOfflineOrders
 import YDB2WCustomerIdentifier
 
-public typealias YDMOfflineAccount = YDMOfflineAccountCoordinator
+public typealias YDMStoreModeOfflineAccount = YDMStoreModeOfflineAccountCoordinator
 
-public class YDMOfflineAccountCoordinator: HistoricNavigationDelegate {
+public class YDMStoreModeOfflineAccountCoordinator: HistoricNavigationDelegate {
   // Properties
   var rootNavigationController: UINavigationController?
   var navigationController: UINavigationController?
@@ -76,7 +76,7 @@ public class YDMOfflineAccountCoordinator: HistoricNavigationDelegate {
   }
 }
 
-extension YDMOfflineAccountCoordinator: PreHomeNavigationDelegate {
+extension YDMStoreModeOfflineAccountCoordinator: PreHomeNavigationDelegate {
   func assignInternalNavigationController(_ nav: UINavigationController?) {
     navigationController = nav
     navigationController?.restorationIdentifier = YDConstants.Miscellaneous.OfflineAccount
@@ -85,7 +85,7 @@ extension YDMOfflineAccountCoordinator: PreHomeNavigationDelegate {
 }
 
 // MARK: Home
-extension YDMOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
+extension YDMStoreModeOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
   func openCustomerIdentifier() {
     YDCustomerIdentifier().start(user: currentUser)
   }
@@ -118,7 +118,7 @@ extension YDMOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
 }
 
 // MARK: User Data Navigation
-extension YDMOfflineAccountCoordinator: UserDataNavigationDelegate {
+extension YDMStoreModeOfflineAccountCoordinator: UserDataNavigationDelegate {
   func openUserHistoric(withUser user: YDLasaClientLogin) {
     guard let viewController = HistoricViewController.initializeFromStoryboard()
     else {
@@ -158,4 +158,4 @@ extension YDMOfflineAccountCoordinator: UserDataNavigationDelegate {
 }
 
 // MARK: Terms Navigation
-extension YDMOfflineAccountCoordinator: TermsNavigationDelegate {}
+extension YDMStoreModeOfflineAccountCoordinator: TermsNavigationDelegate {}
