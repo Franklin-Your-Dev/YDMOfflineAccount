@@ -16,9 +16,9 @@ import YDQuiz
 import YDMOfflineOrders
 import YDB2WCustomerIdentifier
 
-public typealias YDMStoreModeOfflineAccount = YDMStoreModeOfflineAccountCoordinator
+public typealias YDMOfflineAccount = YDMOfflineAccountCoordinator
 
-public class YDMStoreModeOfflineAccountCoordinator: HistoricNavigationDelegate {
+public class YDMOfflineAccountCoordinator: HistoricNavigationDelegate {
   // Properties
   var rootNavigationController: UINavigationController?
   var navigationController: UINavigationController?
@@ -76,7 +76,7 @@ public class YDMStoreModeOfflineAccountCoordinator: HistoricNavigationDelegate {
   }
 }
 
-extension YDMStoreModeOfflineAccountCoordinator: PreHomeNavigationDelegate {
+extension YDMOfflineAccountCoordinator: PreHomeNavigationDelegate {
   func assignInternalNavigationController(_ nav: UINavigationController?) {
     navigationController = nav
     navigationController?.restorationIdentifier = YDConstants.Miscellaneous.OfflineAccount
@@ -85,7 +85,7 @@ extension YDMStoreModeOfflineAccountCoordinator: PreHomeNavigationDelegate {
 }
 
 // MARK: Home
-extension YDMStoreModeOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
+extension YDMOfflineAccountCoordinator: HomeViewModelNavigationDelegate {
   func openCustomerIdentifier() {
     YDCustomerIdentifier().start(user: currentUser)
   }
@@ -118,7 +118,7 @@ extension YDMStoreModeOfflineAccountCoordinator: HomeViewModelNavigationDelegate
 }
 
 // MARK: User Data Navigation
-extension YDMStoreModeOfflineAccountCoordinator: UserDataNavigationDelegate {
+extension YDMOfflineAccountCoordinator: UserDataNavigationDelegate {
   func openUserHistoric(withUser user: YDLasaClientLogin) {
     guard let viewController = HistoricViewController.initializeFromStoryboard()
     else {
@@ -158,4 +158,4 @@ extension YDMStoreModeOfflineAccountCoordinator: UserDataNavigationDelegate {
 }
 
 // MARK: Terms Navigation
-extension YDMStoreModeOfflineAccountCoordinator: TermsNavigationDelegate {}
+extension YDMOfflineAccountCoordinator: TermsNavigationDelegate {}

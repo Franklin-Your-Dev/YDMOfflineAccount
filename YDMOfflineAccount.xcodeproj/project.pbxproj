@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920744DF275717EF000311D5 /* UserDataViewController+EmailDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920744DE275717EF000311D5 /* UserDataViewController+EmailDialog.swift */; };
+		920744E327571BB3000311D5 /* HomeViewModel+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920744E227571BB3000311D5 /* HomeViewModel+Observers.swift */; };
+		920744E627572097000311D5 /* HomeViewController+EmailDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920744E527572097000311D5 /* HomeViewController+EmailDialog.swift */; };
 		920E237127563BCE003C73DB /* ItensOffinlineAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */; };
 		920E2375275668D7003C73DB /* HomeViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E2374275668D7003C73DB /* HomeViewController+Layout.swift */; };
 		92427B9127308266007358A4 /* YDMOfflineAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 92427B8F27308266007358A4 /* YDMOfflineAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92427B98273082DC007358A4 /* YDMOfflineAccount.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 92427B97273082DC007358A4 /* YDMOfflineAccount.podspec */; };
 		92427BED273082E9007358A4 /* YDErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427B9B273082E8007358A4 /* YDErrorView.swift */; };
 		92427BEE273082E9007358A4 /* historicMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 92427B9D273082E9007358A4 /* historicMock.json */; };
-		92427BEF273082E9007358A4 /* termos-uso.html in Resources */ = {isa = PBXBuildFile; fileRef = 92427B9E273082E9007358A4 /* termos-uso.html */; };
 		92427BF0273082E9007358A4 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92427BA1273082E9007358A4 /* HomeViewController.storyboard */; };
 		92427BF1273082E9007358A4 /* HistoricViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92427BA3273082E9007358A4 /* HistoricViewController.storyboard */; };
 		92427BF2273082E9007358A4 /* HistoricViewController+Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BA4273082E9007358A4 /* HistoricViewController+Layouts.swift */; };
@@ -50,7 +52,8 @@
 		92427C11273082E9007358A4 /* HistoricViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BE6273082E9007358A4 /* HistoricViewModel.swift */; };
 		92427C12273082E9007358A4 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BE8273082E9007358A4 /* TermsViewModel.swift */; };
 		92427C13273082E9007358A4 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEA273082E9007358A4 /* UserDataViewModel.swift */; };
-		92427C14273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */; };
+		92427C14273082E9007358A4 /* YDMOfflineAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92427BEC273082E9007358A4 /* YDMOfflineAccountCoordinator.swift */; };
+		925BCE512756DC0700FD3AB4 /* UserDataViewModel+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BCE502756DC0700FD3AB4 /* UserDataViewModel+Observers.swift */; };
 		9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42427517043002991AC /* HomeHeaderViewCell.swift */; };
 		9294A42727517043002991AC /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42527517043002991AC /* HomeViewCell.swift */; };
 		9294A42D275319E7002991AC /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */; };
@@ -61,6 +64,9 @@
 		01CA1AB3BDF0E2149CF5A127 /* Pods-YDMOfflineAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDMOfflineAccount.release.xcconfig"; path = "Target Support Files/Pods-YDMOfflineAccount/Pods-YDMOfflineAccount.release.xcconfig"; sourceTree = "<group>"; };
 		01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDMOfflineAccount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5719294B3B64F5D6E4537C /* Pods-YDMOfflineAccount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDMOfflineAccount.debug.xcconfig"; path = "Target Support Files/Pods-YDMOfflineAccount/Pods-YDMOfflineAccount.debug.xcconfig"; sourceTree = "<group>"; };
+		920744DE275717EF000311D5 /* UserDataViewController+EmailDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataViewController+EmailDialog.swift"; sourceTree = "<group>"; };
+		920744E227571BB3000311D5 /* HomeViewModel+Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Observers.swift"; sourceTree = "<group>"; };
+		920744E527572097000311D5 /* HomeViewController+EmailDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+EmailDialog.swift"; sourceTree = "<group>"; };
 		920E237027563BCE003C73DB /* ItensOffinlineAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItensOffinlineAccount.swift; sourceTree = "<group>"; };
 		920E2374275668D7003C73DB /* HomeViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Layout.swift"; sourceTree = "<group>"; };
 		92427B8C27308266007358A4 /* YDMOfflineAccount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YDMOfflineAccount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +75,6 @@
 		92427B97273082DC007358A4 /* YDMOfflineAccount.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YDMOfflineAccount.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		92427B9B273082E8007358A4 /* YDErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDErrorView.swift; sourceTree = "<group>"; };
 		92427B9D273082E9007358A4 /* historicMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = historicMock.json; sourceTree = "<group>"; };
-		92427B9E273082E9007358A4 /* termos-uso.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "termos-uso.html"; sourceTree = "<group>"; };
 		92427BA1273082E9007358A4 /* HomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		92427BA3273082E9007358A4 /* HistoricViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HistoricViewController.storyboard; sourceTree = "<group>"; };
 		92427BA4273082E9007358A4 /* HistoricViewController+Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HistoricViewController+Layouts.swift"; sourceTree = "<group>"; };
@@ -106,7 +111,8 @@
 		92427BE6273082E9007358A4 /* HistoricViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricViewModel.swift; sourceTree = "<group>"; };
 		92427BE8273082E9007358A4 /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		92427BEA273082E9007358A4 /* UserDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
-		92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMStoreModeOfflineAccountCoordinator.swift; sourceTree = "<group>"; };
+		92427BEC273082E9007358A4 /* YDMOfflineAccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMOfflineAccountCoordinator.swift; sourceTree = "<group>"; };
+		925BCE502756DC0700FD3AB4 /* UserDataViewModel+Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataViewModel+Observers.swift"; sourceTree = "<group>"; };
 		9294A42427517043002991AC /* HomeHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewCell.swift; sourceTree = "<group>"; };
 		9294A42527517043002991AC /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		9294A42C275319E7002991AC /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
@@ -139,6 +145,54 @@
 				01EF0874363BCB0D7C72C8AC /* Pods_YDMOfflineAccount.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		920744DD275717CE000311D5 /* EmailDialog */ = {
+			isa = PBXGroup;
+			children = (
+				920744DE275717EF000311D5 /* UserDataViewController+EmailDialog.swift */,
+			);
+			path = EmailDialog;
+			sourceTree = "<group>";
+		};
+		920744E027571BA1000311D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				920744E127571BA6000311D5 /* Observers */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		920744E127571BA6000311D5 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				920744E227571BB3000311D5 /* HomeViewModel+Observers.swift */,
+			);
+			path = Observers;
+			sourceTree = "<group>";
+		};
+		920744E427572085000311D5 /* EmailDialog */ = {
+			isa = PBXGroup;
+			children = (
+				920744E527572097000311D5 /* HomeViewController+EmailDialog.swift */,
+			);
+			path = EmailDialog;
+			sourceTree = "<group>";
+		};
+		920744E72757B6CB000311D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				92427BE6273082E9007358A4 /* HistoricViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		920744E82757B721000311D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				92427BA6273082E9007358A4 /* TermsViewController.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		920E236F27563BC2003C73DB /* Model */ = {
@@ -182,11 +236,8 @@
 			children = (
 				92427B99273082E8007358A4 /* Components */,
 				92427BEB273082E9007358A4 /* Coordinator */,
-				9294A39D27513E9E002991AC /* Home */,
+				925BCE522756E69100FD3AB4 /* Screens */,
 				92427B9C273082E9007358A4 /* Resource */,
-				92427B9F273082E9007358A4 /* View */,
-				92427BB4273082E9007358A4 /* ViewController */,
-				92427BE1273082E9007358A4 /* ViewModel */,
 				92427B8F27308266007358A4 /* YDMOfflineAccount.h */,
 				92427B9027308266007358A4 /* Info.plist */,
 			);
@@ -213,19 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				92427B9D273082E9007358A4 /* historicMock.json */,
-				92427B9E273082E9007358A4 /* termos-uso.html */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		92427B9F273082E9007358A4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				92427BA2273082E9007358A4 /* Historic */,
-				92427BA5273082E9007358A4 /* Terms */,
-				92427BA7273082E9007358A4 /* UserData */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		92427BA0273082E9007358A4 /* View */ = {
@@ -239,31 +279,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		92427BA2273082E9007358A4 /* Historic */ = {
+		92427BA2273082E9007358A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				92427BA3273082E9007358A4 /* HistoricViewController.storyboard */,
 				92427BA4273082E9007358A4 /* HistoricViewController+Layouts.swift */,
 			);
-			path = Historic;
+			path = View;
 			sourceTree = "<group>";
 		};
 		92427BA5273082E9007358A4 /* Terms */ = {
 			isa = PBXGroup;
 			children = (
-				92427BA6273082E9007358A4 /* TermsViewController.storyboard */,
+				920744E82757B721000311D5 /* View */,
+				92427BC8273082E9007358A4 /* ViewController */,
+				92427BE7273082E9007358A4 /* ViewModel */,
 			);
 			path = Terms;
 			sourceTree = "<group>";
 		};
-		92427BA7273082E9007358A4 /* UserData */ = {
+		92427BA7273082E9007358A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				92427BA8273082E9007358A4 /* UserDataViewController.storyboard */,
 				92427BA9273082E9007358A4 /* Cell */,
 				92427BB2273082E9007358A4 /* UserDataViewController+Layout.swift */,
 			);
-			path = UserData;
+			path = View;
 			sourceTree = "<group>";
 		};
 		92427BA9273082E9007358A4 /* Cell */ = {
@@ -309,16 +351,6 @@
 			path = Marketing;
 			sourceTree = "<group>";
 		};
-		92427BB4273082E9007358A4 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				92427BBE273082E9007358A4 /* Historic */,
-				92427BC8273082E9007358A4 /* Terms */,
-				92427BCD273082E9007358A4 /* UserData */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		92427BB5273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,10 +364,11 @@
 		92427BB7273082E9007358A4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9294A42B275319CE002991AC /* CollectionView */,
-				92427BB8273082E9007358A4 /* ScrollView */,
-				92427BBA273082E9007358A4 /* Dialog */,
 				92427BBC273082E9007358A4 /* Binds */,
+				9294A42B275319CE002991AC /* CollectionView */,
+				92427BBA273082E9007358A4 /* Dialog */,
+				920744E427572085000311D5 /* EmailDialog */,
+				92427BB8273082E9007358A4 /* ScrollView */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,13 +397,13 @@
 			path = Binds;
 			sourceTree = "<group>";
 		};
-		92427BBE273082E9007358A4 /* Historic */ = {
+		92427BBE273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				92427BBF273082E9007358A4 /* HistoricViewController.swift */,
 				92427BC0273082E9007358A4 /* Extensions */,
 			);
-			path = Historic;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		92427BC0273082E9007358A4 /* Extensions */ = {
@@ -407,13 +440,13 @@
 			path = Binds;
 			sourceTree = "<group>";
 		};
-		92427BC8273082E9007358A4 /* Terms */ = {
+		92427BC8273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				92427BC9273082E9007358A4 /* TermsViewController.swift */,
 				92427BCA273082E9007358A4 /* Extensions */,
 			);
-			path = Terms;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		92427BCA273082E9007358A4 /* Extensions */ = {
@@ -432,22 +465,23 @@
 			path = Binds;
 			sourceTree = "<group>";
 		};
-		92427BCD273082E9007358A4 /* UserData */ = {
+		92427BCD273082E9007358A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				92427BCE273082E9007358A4 /* UserDataViewController.swift */,
 				92427BCF273082E9007358A4 /* Extensions */,
 			);
-			path = UserData;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		92427BCF273082E9007358A4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				92427BDF273082E9007358A4 /* Binds */,
+				920744DD275717CE000311D5 /* EmailDialog */,
+				92427BDD273082E9007358A4 /* Dialog */,
 				92427BD0273082E9007358A4 /* ScrollView */,
 				92427BD2273082E9007358A4 /* TableView */,
-				92427BDD273082E9007358A4 /* Dialog */,
-				92427BDF273082E9007358A4 /* Binds */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -528,36 +562,30 @@
 			path = Binds;
 			sourceTree = "<group>";
 		};
-		92427BE1273082E9007358A4 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				92427BE5273082E9007358A4 /* Historic */,
-				92427BE7273082E9007358A4 /* Terms */,
-				92427BE9273082E9007358A4 /* UserData */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		92427BE5273082E9007358A4 /* Historic */ = {
 			isa = PBXGroup;
 			children = (
-				92427BE6273082E9007358A4 /* HistoricViewModel.swift */,
+				92427BA2273082E9007358A4 /* View */,
+				92427BBE273082E9007358A4 /* ViewController */,
+				920744E72757B6CB000311D5 /* ViewModel */,
 			);
 			path = Historic;
 			sourceTree = "<group>";
 		};
-		92427BE7273082E9007358A4 /* Terms */ = {
+		92427BE7273082E9007358A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				92427BE8273082E9007358A4 /* TermsViewModel.swift */,
 			);
-			path = Terms;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		92427BE9273082E9007358A4 /* UserData */ = {
 			isa = PBXGroup;
 			children = (
-				92427BEA273082E9007358A4 /* UserDataViewModel.swift */,
+				92427BA7273082E9007358A4 /* View */,
+				92427BCD273082E9007358A4 /* ViewController */,
+				925BCE532756E6A900FD3AB4 /* ViewModel */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -565,9 +593,45 @@
 		92427BEB273082E9007358A4 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				92427BEC273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift */,
+				92427BEC273082E9007358A4 /* YDMOfflineAccountCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		925BCE4E2756DBF400FD3AB4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				925BCE4F2756DBFA00FD3AB4 /* Observers */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		925BCE4F2756DBFA00FD3AB4 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				925BCE502756DC0700FD3AB4 /* UserDataViewModel+Observers.swift */,
+			);
+			path = Observers;
+			sourceTree = "<group>";
+		};
+		925BCE522756E69100FD3AB4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				92427BE5273082E9007358A4 /* Historic */,
+				9294A39D27513E9E002991AC /* Home */,
+				92427BA5273082E9007358A4 /* Terms */,
+				92427BE9273082E9007358A4 /* UserData */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		925BCE532756E6A900FD3AB4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				92427BEA273082E9007358A4 /* UserDataViewModel.swift */,
+				925BCE4E2756DBF400FD3AB4 /* Extensions */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9294A39D27513E9E002991AC /* Home */ = {
@@ -584,6 +648,7 @@
 		9294A39E27513EB5002991AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				920744E027571BA1000311D5 /* Extensions */,
 				92427BE2273082E9007358A4 /* PreHomeViewModel.swift */,
 				92427BE4273082E9007358A4 /* HomeViewModel.swift */,
 			);
@@ -671,7 +736,6 @@
 				92427BF6273082E9007358A4 /* UserDataTermsAndButtonTableViewCell.xib in Resources */,
 				92427BF7273082E9007358A4 /* UserDataInfoTableViewCell.xib in Resources */,
 				92427BF0273082E9007358A4 /* HomeViewController.storyboard in Resources */,
-				92427BEF273082E9007358A4 /* termos-uso.html in Resources */,
 				92427BEE273082E9007358A4 /* historicMock.json in Resources */,
 				92427BF1273082E9007358A4 /* HistoricViewController.storyboard in Resources */,
 				92427BF8273082E9007358A4 /* UserDataMarketingTableViewCell.xib in Resources */,
@@ -722,9 +786,12 @@
 				920E2375275668D7003C73DB /* HomeViewController+Layout.swift in Sources */,
 				92427C0B273082E9007358A4 /* UserDataInfoTableViewCell.swift in Sources */,
 				92427C0C273082E9007358A4 /* UserDataMarketingTableViewCell.swift in Sources */,
+				925BCE512756DC0700FD3AB4 /* UserDataViewModel+Observers.swift in Sources */,
 				92427C13273082E9007358A4 /* UserDataViewModel.swift in Sources */,
+				920744E327571BB3000311D5 /* HomeViewModel+Observers.swift in Sources */,
 				92427C09273082E9007358A4 /* UserDataSeparatorTableViewCell.swift in Sources */,
-				92427C14273082E9007358A4 /* YDMStoreModeOfflineAccountCoordinator.swift in Sources */,
+				92427C14273082E9007358A4 /* YDMOfflineAccountCoordinator.swift in Sources */,
+				920744DF275717EF000311D5 /* UserDataViewController+EmailDialog.swift in Sources */,
 				92427BFF273082E9007358A4 /* HistoricViewController.swift in Sources */,
 				92427C0E273082E9007358A4 /* UserDataViewController+Binds.swift in Sources */,
 				92427BFA273082E9007358A4 /* PreHomeViewController+Layout.swift in Sources */,
@@ -748,6 +815,7 @@
 				92427C12273082E9007358A4 /* TermsViewModel.swift in Sources */,
 				9294A42627517043002991AC /* HomeHeaderViewCell.swift in Sources */,
 				92427C06273082E9007358A4 /* UserDataViewController.swift in Sources */,
+				920744E627572097000311D5 /* HomeViewController+EmailDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
