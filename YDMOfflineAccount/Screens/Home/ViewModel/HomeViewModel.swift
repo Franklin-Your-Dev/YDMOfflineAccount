@@ -46,8 +46,6 @@ class HomeViewModel {
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
   var customerIdentifierEnabled = false
   var flagNewCustomerIdentifierEnable = false
-
-  var customerIdentifierEnabled = true
   var emailDialog = Binder(false)
   
   var userClientLasaToken: String = ""

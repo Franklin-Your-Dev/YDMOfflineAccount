@@ -108,6 +108,9 @@ extension YDDialogCoordinator: YDDialogNavigationDelegate {
   }
   
   public func onLinkAction(_ link: String?) {
-    onLinkCallback?(link)
+    rootViewController.dismiss(animated: true) { [weak self] in
+      guard let self = self else { return }
+      self.onLinkCallback?(link)
+    }
   }
 }
