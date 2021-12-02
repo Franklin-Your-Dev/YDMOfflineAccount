@@ -44,7 +44,11 @@ PODS:
     - YDB2WIntegration (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
     - YDUtilities (~> 1.6.0)
+<<<<<<< HEAD
   - YDB2WIntegration (1.6.7):
+=======
+  - YDB2WIntegration (1.6.6):
+>>>>>>> 3464403eece20a6327fcb4ec4ce87400effd3b86
     - YDB2WModels (~> 1.6.0)
     - YDExtensions (~> 1.6.0)
   - YDB2WModels (1.6.10):
@@ -156,20 +160,31 @@ SPEC CHECKSUMS:
   YDB2WAssets: 0cb1af8508d0d45a7cddacfe831944f21c7685d0
   YDB2WBrandManager: 1a04a7b93fccfd773c7da7f5bbcedea3af61f0b6
   YDB2WColors: d65cd1d7b675b18392c1b610315936be8ed00e70
+<<<<<<< HEAD
   YDB2WComponents: caf37491947abbf7354e012eed1860e850b8ea28
   YDB2WCustomerIdentifier: 89d88725cfd82738f468b9d3ccfe60e3a318e39c
   YDB2WDeepLinks: 3f9755b4cc5672e177c4c68708f77fc5ce7b4a08
   YDB2WIntegration: 835efe251da528e9739039c2d89fb7d5fd536935
+=======
+  YDB2WComponents: b06369d1684f42dcc36edf0c847a3ee15779208e
+  YDB2WCustomerIdentifier: 0ad94f6513b1e06aa143f1c77599cb2157dfe86f
+  YDB2WDeepLinks: 3f9755b4cc5672e177c4c68708f77fc5ce7b4a08
+  YDB2WIntegration: 87661e9cbc1c75672d692126b67c404fcb51512d
+>>>>>>> 3464403eece20a6327fcb4ec4ce87400effd3b86
   YDB2WModels: 030794b631e3ecae0130d883e24d5ab29b2d8b40
   YDB2WServices: a03d2836b14eec56867282bf90754ebe4b8bce86
   YDExtensions: afa8516b61c97a2189c7cbb62726467ece7858fb
   YDLocationModule: 35cddec317442e18078cb64e1542d7cd360ccb43
   YDMFindStore: f942907a13bc5b08fe134df07ea2f8e1c15ce8cd
   YDMOfflineOrders: 80f9cae7f1c3211769674e36b755128482cf75e8
+<<<<<<< HEAD
   YDQuiz: 1ff5266f7200d1370e4b7ffd7068583583dad2b5
+=======
+  YDQuiz: 8ea4a2a1e9092ac5cc9ee7e065382c089fad9d4f
+>>>>>>> 3464403eece20a6327fcb4ec4ce87400effd3b86
   YDUtilities: 92fff2335a86b98bd66e766d9a41e6d78fe1c626
   YDWebSocket: 5adddea4995b4b3cd285cf0ad2c5695e0db35020
 
 PODFILE CHECKSUM: 6a88a4b672e71ed7d2fb6972d0590bb10a327db7
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2
