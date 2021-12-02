@@ -31,7 +31,10 @@ class HomeViewCell: UICollectionViewCell {
   }
   
   override func prepareForReuse() {
+    super.prepareForReuse()
     newView.isHidden = true
+    imageView.image = nil
+    titleLabel.text = nil
   }
   
   // MARK: Actions

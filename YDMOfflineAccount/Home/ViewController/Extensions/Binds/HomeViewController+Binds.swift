@@ -15,7 +15,8 @@ extension HomeViewController {
     
     viewModel?.listItensOffiline.bind { _ in
       DispatchQueue.main.async { [weak self] in
-        self?.collectionView?.reloadData()
+        guard let self = self else { return }
+        self.collectionView?.reloadData()
       }
     }
     
