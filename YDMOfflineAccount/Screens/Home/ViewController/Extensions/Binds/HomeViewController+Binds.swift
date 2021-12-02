@@ -13,6 +13,14 @@ extension HomeViewController {
       self?.showAlert(title: params.title, message: params.message)
     }
     
+    viewModel?.listItensOffiline.bind { _ in
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        self.collectionView?.reloadData()
+      }
+    }
+    
+    
     viewModel?.emailDialog.bind { [weak self] _ in
       guard let self = self else { return }
       

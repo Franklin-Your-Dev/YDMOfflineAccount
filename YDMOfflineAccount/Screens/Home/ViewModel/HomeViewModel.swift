@@ -12,6 +12,7 @@ import YDUtilities
 import YDExtensions
 import YDB2WModels
 import YDB2WComponents
+import YDB2WAssets
 
 // MARK: Navigation
 protocol HomeViewModelNavigationDelegate {
@@ -25,11 +26,14 @@ protocol HomeViewModelNavigationDelegate {
 // MARK: Delegate
 protocol HomeViewModelDelegate {
   var currentUser: YDCurrentCustomer { get }
+  var listItensOffiline: Binder<[ItensOffinlineAccount]> { get }
   var error: Binder<(title: String, message: String)> { get }
   var customerIdentifierEnabled: Bool { get set }
+  var flagNewCustomerIdentifierEnable: Bool { get set }
   var emailDialog: Binder<Bool> { get }
   
   func onExit()
+  func buildList()
   func trackState()
   func onCard(tag: ItensOffilineAccountEnum)
 }
@@ -40,10 +44,26 @@ class HomeViewModel {
   let navigation: HomeViewModelNavigationDelegate
   var currentUser: YDCurrentCustomer
   var error: Binder<(title: String, message: String)> = Binder(("", ""))
+  var customerIdentifierEnabled = false
+  var flagNewCustomerIdentifierEnable = false
+
   var customerIdentifierEnabled = true
   var emailDialog = Binder(false)
   
   var userClientLasaToken: String = ""
+  
+  var listItensOffiline: Binder<[ItensOffinlineAccount]> = Binder([ItensOffinlineAccount(
+    icon: YDAssets.Images.store!,
+    title: "suas compras nas lojas físicas",
+    type: .store,
+    new: false
+  ),
+  ItensOffinlineAccount(
+    icon: YDAssets.Images.clipboard!,
+    title: "seu histórico de dados informados nas lojas",
+    type: .clipboard,
+    new: false
+  )])
 
   // MARK: Init
   init(
@@ -64,6 +84,20 @@ extension HomeViewModel: HomeViewModelDelegate {
   func onExit() {
     navigation.onExit()
   }
+  
+  func buildList() {
+    
+    if customerIdentifierEnabled {
+      let customerIdentifier = ItensOffinlineAccount(
+        icon: YDAssets.Images.qrCodeCard!,
+        title: "identifique-se aqui e facilite suas compras nas lojas físicas :)",
+        type: .customerIdentifier,
+        new: flagNewCustomerIdentifierEnable
+      )
+      listItensOffiline.value.insert(customerIdentifier, at: 0)
+    }
+    
+  }
 
   func trackState() {
     YDIntegrationHelper.shared.trackEvent(withName: .offlineAccountPerfil, ofType: .state)
@@ -76,19 +110,6 @@ extension HomeViewModel: HomeViewModelDelegate {
         navigation.openCustomerIdentifier()
         
       case .store:
-        // User Data
-        let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "meus dados"])
-        
-        YDIntegrationHelper.shared
-          .trackEvent(
-            withName: .offlineAccountPerfil,
-            ofType: .action,
-            withParameters: parameters
-          )
-        
-        navigation.openUserData()
-
-      case .clipboard:
         // Offline orders
         let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "minhas compras"])
         
@@ -101,6 +122,19 @@ extension HomeViewModel: HomeViewModelDelegate {
         
         addQuizObservers()
         navigation.openOfflineOrders()
+
+      case .clipboard:
+        // User Data
+        let parameters = TrackEvents.offlineAccountPerfil.parameters(body: ["action": "meus dados"])
+        
+        YDIntegrationHelper.shared
+          .trackEvent(
+            withName: .offlineAccountPerfil,
+            ofType: .action,
+            withParameters: parameters
+          )
+        
+        navigation.openUserData()
     }
   }
 }

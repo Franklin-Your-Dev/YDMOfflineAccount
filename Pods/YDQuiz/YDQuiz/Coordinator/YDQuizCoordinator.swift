@@ -12,6 +12,7 @@ import YDUtilities
 import YDB2WComponents
 import YDB2WIntegration
 import YDB2WColors
+import MessageUI
 
 public typealias YDQuiz = YDQuizCoordinator
 
@@ -108,54 +109,15 @@ private func openDialog(withType type: QuizCallbackType) {
   DispatchQueue.main.async {
     switch type {
       case .wrongAnswer(let autoExit):
-        let title = autoExit ?
-          "poxa, não encontramos os seus dados" :
-          "poxa, ainda não temos seu cadastro completo"
-        
-        let message = "Mas, não se preocupe: pra gente te ajudar a entender o que aconteceu, mande um e-mail pra atendimento.acom@americanas.com"
-        
         YDIntegrationHelper.shared.trackEvent(
           withName: autoExit ? .quizIncompleteRegistration : .quizRegistrationNotFound,
           ofType: .state
         )
         
-        let dialog = YDDialog()
-        dialog.callback = { _, _ in
-          NotificationCenter.default.post(
-            name: YDConstants.Notification.QuizWrongAnswer,
-            object: nil,
-            userInfo: ["autoExit": autoExit]
-          )
-        }
-        
-        dialog.onLinkCallback = { linkOpt in
-          guard let link = linkOpt,
-                let url = URL(string: link)
-          else {
-            return
-          }
-          
-          let parameters = autoExit ?
-            TrackEvents.quizIncompleteRegistration.parameters(body: [:]) :
-            TrackEvents.quizRegistrationNotFound.parameters(body: [:])
-          
-          YDIntegrationHelper.shared.trackEvent(
-            withName: autoExit ? .quizIncompleteRegistration : .quizRegistrationNotFound,
-            ofType: .action,
-            withParameters: parameters
-          )
-          
-          UIApplication.shared.open(url)
-        }
-        
-        dialog.start(
-          ofType: .simple,
-          customTitle: title,
-          customMessage: message,
-          messageLink: [
-            "message": "atendimento.acom@americanas.com",
-            "link": "mailto:atendimento.acom@americanas.com"
-          ]
+        NotificationCenter.default.post(
+          name: YDConstants.Notification.QuizWrongAnswer,
+          object: nil,
+          userInfo: ["autoExit": autoExit]
         )
         
       case .success:

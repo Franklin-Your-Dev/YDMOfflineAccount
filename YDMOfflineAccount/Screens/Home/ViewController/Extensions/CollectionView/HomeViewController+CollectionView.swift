@@ -11,7 +11,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
   
   func collectionView(_ collectionView: UICollectionView,
                       numberOfItemsInSection section: Int) -> Int {
-    return listItensOffiline.count
+    return viewModel?.listItensOffiline.value.count ?? 0
   }
   
   func collectionView(
@@ -24,7 +24,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
       for: indexPath
     ) as! HomeViewCell
     
-    cell.populateView(item: (listItensOffiline[indexPath.row]))
+    if let item = viewModel?.listItensOffiline.value[indexPath.row] {
+      cell.populateView(item: item)
+    }
     
     return cell
   }
@@ -42,7 +44,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
       for: indexPath
     ) as! HomeHeaderViewCell
     
-    header.populateView(user: viewModel!.currentUser)
+    if let user = viewModel?.currentUser {
+      header.populateView(user: user)
+    }
     
     return header
     
@@ -60,11 +64,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
       
-    return CGSize(width: view.frame.size.width, height: 140)
+    return CGSize(width: view.frame.size.width, height: 170)
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    viewModel?.onCard(tag: listItensOffiline[indexPath.row].type)
+    if let item = viewModel?.listItensOffiline.value[indexPath.row].type {
+      viewModel?.onCard(tag: item)
+    }
   }
 
 }
