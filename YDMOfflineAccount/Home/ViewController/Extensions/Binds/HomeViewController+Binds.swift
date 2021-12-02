@@ -20,11 +20,5 @@ extension HomeViewController {
       }
     }
     
-    
-    viewModel?.emailDialog.bind { [weak self] _ in
-      guard let self = self else { return }
-      
-      self.openEmailDialog()
-    }
   }
 }
