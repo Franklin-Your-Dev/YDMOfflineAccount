@@ -24,9 +24,9 @@ class ViewController: UIViewController {
       clientLasaStoreId: "clientLasaStoreId"
     )
     
-    let teste = YDMStoreModeOfflineAccount()
+    let teste = YDMOfflineAccount()
     Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: {_ in
-      teste.start(navCon: self.navigationController, user: user)
+      teste.start(navCon: self.navigationController, user: user, openCustomerIdentifier: true)
     })
   }
 

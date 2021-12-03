@@ -31,7 +31,7 @@ public class YDMOfflineAccountCoordinator: HistoricNavigationDelegate {
   public init() {}
 
   // MARK: Actions
-  public func start(navCon: UINavigationController?, user: YDCurrentCustomer) {
+  public func start(navCon: UINavigationController?, user: YDCurrentCustomer, openCustomerIdentifier: Bool) {
     let viewController = PreHomeViewController()
 
     currentUser = user
@@ -41,6 +41,10 @@ public class YDMOfflineAccountCoordinator: HistoricNavigationDelegate {
 
     rootNavigationController = navCon
     rootNavigationController?.pushViewController(viewController, animated: true)
+    
+    if openCustomerIdentifier {
+      YDCustomerIdentifier().start(user: currentUser)
+    }
   }
 
   func startHome() {

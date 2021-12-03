@@ -9,7 +9,7 @@ import UIKit
 
 extension YDTaxCouponContainerViewController {
   func configureUI() {
-    view.backgroundColor = .black.withAlphaComponent(0.5)
+    view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     
     configureContainerView()
   }

@@ -47,7 +47,6 @@ class HomeViewModel {
   var customerIdentifierEnabled = false
   var flagNewCustomerIdentifierEnable = false
 
-  var customerIdentifierEnabled = true
   var emailDialog = Binder(false)
   
   var userClientLasaToken: String = ""
