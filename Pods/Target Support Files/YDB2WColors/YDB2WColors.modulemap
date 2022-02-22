@@ -1,6 +1,0 @@
-framework module YDB2WColors {
-  umbrella header "YDB2WColors-umbrella.h"
-
-  export *
-  module * { export * }
-}

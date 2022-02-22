@@ -1,6 +1,0 @@
-framework module curvyRoute {
-  umbrella header "curvyRoute-umbrella.h"
-
-  export *
-  module * { export * }
-}

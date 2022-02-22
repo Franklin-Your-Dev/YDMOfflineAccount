@@ -1,6 +1,0 @@
-framework module YDLocationModule {
-  umbrella header "YDLocationModule-umbrella.h"
-
-  export *
-  module * { export * }
-}

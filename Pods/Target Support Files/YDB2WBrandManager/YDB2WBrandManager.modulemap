@@ -1,6 +1,0 @@
-framework module YDB2WBrandManager {
-  umbrella header "YDB2WBrandManager-umbrella.h"
-
-  export *
-  module * { export * }
-}
